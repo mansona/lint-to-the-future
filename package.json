@@ -1,11 +1,10 @@
 {
   "name": "lint-to-the-future",
   "version": "0.0.0",
-  "private": true,
-  "description": "Small description for lint-to-the-future goes here",
+  "description": "A modern way to progressively update your code to the best practices",
   "repository": "",
   "license": "MIT",
-  "author": "",
+  "author": "Chris Manson <chris@manson.ie>",
   "bin": {
     "lint-to-the-future": "cli.js"
   },
@@ -13,6 +12,9 @@
     "doc": "doc",
     "test": "tests"
   },
+  "files": [
+    "cli.js"
+  ],
   "scripts": {
     "build": "ember build --environment=production",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*",
