@@ -1,57 +1,35 @@
 # lint-to-the-future
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
-
-## Prerequisites
-
-You will need the following things properly installed on your computer.
-
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
-* [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
+LintToTheFuture is a modern way to progressively update your entire codebase to the latest best practices. It has a number of tools that work together to manage linting rules and provides a sustainable way to add new rules to existing codebases without slowing down your development
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd lint-to-the-future`
-* `npm install`
+You should install this as a dev-dependency of your project
 
-## Running / Development
+```
+npm i --save-dev lint-to-the-furture
+```
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+## Usage
 
-### Code Generators
+This project is still in alpha phase, so we will add new sub-sections to Usage as they have been implemented. If you are interested in this project feel free to reach out to me on Twitter at [@real_ate](https://twitter.com/real_ate).
 
-Make use of the many generators for code, try `ember help generate` for more details
+### Adding file-based lint ignores to your project
 
-### Running Tests
+Running the cli application will automatically run `eslint` on your codebase and add file-based ignores to that file.
 
-* `ember test`
-* `ember test --server`
+```
+npx lint-to-the-future
+```
 
-### Linting
+After running this process you should be able to run `eslint` on your project again and it will show no more errors.
 
-* `npm run lint:hbs`
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
+**Note:** we don't currently add file-based ignores for warnings as they don't generally break CI in the most common configurations.
 
-### Building
+## Frequently Asked Questions
 
-* `ember build` (development)
-* `ember build --environment production` (production)
+### Why do you use file based ignores instead of line-based or projected-wide
 
-### Deploying
+The point of LintToTheFuture is to allow you to **progressively** update your codebase using new lint rules without overwhelming you with the task. You can easily ignore lint rules using project-based ignores in your config files but that doesn't prevent you from making the same errors in new files.
 
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+We chose to do the ignores on a file basis as it is a perfect balance and it means that the tracking/graphing aspects of LintToTheFuture provide you with achievable goals, especially in large codebases.
