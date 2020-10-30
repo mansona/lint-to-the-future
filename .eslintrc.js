@@ -34,7 +34,8 @@ module.exports = {
         'blueprints/*/index.js',
         'config/**/*.js',
         'lib/*/index.js',
-        'server/**/*.js'
+        'server/**/*.js',
+        'cli.js'
       ],
       parserOptions: {
         sourceType: 'script'
