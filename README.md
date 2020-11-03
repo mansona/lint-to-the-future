@@ -7,7 +7,7 @@ LintToTheFuture is a modern way to progressively update your entire codebase to 
 You should install this as a dev-dependency of your project
 
 ```
-npm i --save-dev lint-to-the-furture
+npm i --save-dev lint-to-the-future
 ```
 
 ## Usage
