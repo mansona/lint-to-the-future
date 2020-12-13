@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
+const { join } = require('path');
 const importCwd = require('import-cwd');
 
 // var resolve = require('resolve').sync;
 
 async function main() {
-  let currentPackageJSON = importCwd('package.json');
+  let currentPackageJSON = require(join(process.cwd(), 'package.json'));
 
   let lttfPlugins = [
     ...Object.keys(currentPackageJSON.devDependencies),
