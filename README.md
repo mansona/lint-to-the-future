@@ -10,13 +10,21 @@ You should install this as a dev-dependency of your project
 npm i --save-dev lint-to-the-future
 ```
 
+on its own LintToTheFuture doesn't do anything by itself, you should also install some plugins. The first plugin written for LintToTheFuture was the eslint plugin which you can install using the following:
+
+```
+npm i --save-dev lint-to-the-future-eslint
+```
+
+LintToTheFuture will automatically load each plugin (any package you have installed locally starting with `lint-to-the-future-`) and run them in order.
+
 ## Usage
 
 This project is still in alpha phase, so we will add new sub-sections to Usage as they have been implemented. If you are interested in this project feel free to reach out to me on Twitter at [@real_ate](https://twitter.com/real_ate).
 
 ### Adding file-based lint ignores to your project
 
-Running the cli application will automatically run `eslint` on your codebase and add file-based ignores to that file.
+Using the `eslint` plugin as an example: running the cli application will automatically run `eslint` on your codebase and add file-based ignores to that file.
 
 ```
 npx lint-to-the-future

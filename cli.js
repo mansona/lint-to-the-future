@@ -1,33 +1,22 @@
 #!/usr/bin/env node
 
-const eslint = require("eslint");
-const { readFileSync, writeFileSync } = require('fs');
+const importCwd = require('import-cwd');
 
-const { CLIEngine } = eslint;
-
-function ignoreError(error) {
-  const ruleIds = error.messages.map(message => message.ruleId);
-  const uniqueIds = [...new Set(ruleIds)];
-
-  const file = readFileSync(error.filePath, 'utf8');
-
-  let firstLine = file.split('\n')[0];
-
-  if (firstLine.includes('eslint-disable')) {
-    console.warn('appending existing disables not supported yet');
-  } else {
-    writeFileSync(error.filePath, `/* eslint-disable ${uniqueIds.join(', ')} */\n${file}`)
-  }
-}
+// var resolve = require('resolve').sync;
 
 async function main() {
-  const cli = new CLIEngine();
+  let currentPackageJSON = importCwd('package.json');
 
-  const report = cli.executeOnFiles(["."]);
+  let lttfPlugins = [
+    ...Object.keys(currentPackageJSON.devDependencies),
+    ...Object.keys(currentPackageJSON.dependencies)
+  ].filter(dep => dep.startsWith('lint-to-the-future-'));
 
-  const errors = report.results.filter(result => result.errorCount > 0);
+  for (let pluginName of lttfPlugins) {
+    let plugin = importCwd(pluginName);
 
-  errors.forEach(ignoreError);
+    await plugin.ignoreAll();
+  }
 }
 
 main().catch((error) => {

@@ -64,5 +64,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "import-cwd": "^3.0.0"
   }
 }
