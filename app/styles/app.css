@@ -4,6 +4,22 @@ body {
   grid-gap: 20px
 }
 
+.modal {
+  position: fixed;
+  top: 50px;
+  bottom: 50px;
+  right: 50px;
+  left: 50px;
+
+  border-radius: 25px;
+  padding: 25px;
+  background-color: #eee;
+}
+
+.modal > h1 {
+  margin-top: 0;
+}
+
 .flex {
   display: flex;
   align-items: baseline;
