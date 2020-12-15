@@ -13,7 +13,8 @@
     "test": "tests"
   },
   "files": [
-    "cli.js"
+    "cli.js",
+    "dist"
   ],
   "scripts": {
     "build": "ember build --environment=production",
@@ -22,7 +23,8 @@
     "lint:js": "eslint .",
     "start": "ember serve",
     "test": "npm-run-all lint:* test:*",
-    "test:ember": "ember test"
+    "test:ember": "ember test",
+    "prepublishOnly": "rm -rf dist && npm run build"
   },
   "devDependencies": {
     "@ember/optional-features": "^1.3.0",
@@ -68,6 +70,9 @@
     "edition": "octane"
   },
   "dependencies": {
-    "import-cwd": "^3.0.0"
+    "fs-extra": "^7.0.1",
+    "import-cwd": "^3.0.0",
+    "minimist": "^1.2.5",
+    "node-fetch": "^2.6.0"
   }
 }
