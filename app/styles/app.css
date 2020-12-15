@@ -1,0 +1,11 @@
+body {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(600px, 100%), 1fr));
+  grid-gap: 20px
+}
+
+.flex {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
