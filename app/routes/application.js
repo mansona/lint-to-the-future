@@ -1,9 +1,11 @@
 import Route from '@ember/routing/route';
 import fetch from 'fetch';
 
+import env from 'lint-to-the-future/config/environment';
+
 export default class ApplicationRoute extends Route {
   async model() {
-    let data = await (await fetch('/data.json')).json();
+    let data = await (await fetch(`${env.rootURL}data.json`)).json();
 
     let results = {};
 
