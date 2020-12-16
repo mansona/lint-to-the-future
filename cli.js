@@ -54,11 +54,13 @@ async function output(lttfPlugins) {
     let envContent =  JSON.parse(decodeURIComponent(envContentString));
     envContent.rootURL = `/${argv.rootUrl}/`;
     console.log(envContent);
-    writeFileSync(join(argv.o, 'index.html'), index.replace(regex, `<meta name="lint-to-the-future/config/environment" content="${encodeURIComponent(JSON.stringify(envContent))}" />`), )
+    writeFileSync(
+      join(argv.o, 'index.html'),
+      index
+        .replace(regex, `<meta name="lint-to-the-future/config/environment" content="${encodeURIComponent(JSON.stringify(envContent))}" />`)
+        .replace(/"\/assets\//g, `"/${argv.rootUrl}/assets/`),
+    );
   }
-
-
-
 
   writeFileSync(join(argv.o, 'data.json'), JSON.stringify(ouputResult));
 }
