@@ -22,7 +22,7 @@ LintToTheFuture will automatically load each plugin (any package you have instal
 
 This project is still in alpha phase, so we will add new sub-sections to Usage as they have been implemented. If you are interested in this project feel free to reach out to me on Twitter at [@real_ate](https://twitter.com/real_ate).
 
-### Adding file-based lint ignores to your project
+### Adding file-based lint ignores to your project
 
 Using the `eslint` plugin as an example: running the cli application will automatically run `eslint` on your codebase and add file-based ignores to that file.
 
