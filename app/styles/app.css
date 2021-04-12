@@ -1,8 +1,22 @@
 body {
+  background-color: #EDF7D2;
   font-family: 'Source Sans Pro', sans-serif;
+  margin: 20px;
+}
+a {
+  color: #5C8001;
+}
+.graphs {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(600px, 100%), 1fr));
   grid-gap: 20px
+}
+
+.lttf-chart {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
 .modal {
