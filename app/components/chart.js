@@ -71,7 +71,10 @@ export default class ChartComponent extends Component {
         data: data,
         type: 'axis-mixed', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
         height: 250,
-        colors: ['#7cd6fd', '#743ee2']
+        colors: ['#7cd6fd', '#743ee2'],
+        axisOptions: {
+          xIsSeries: true
+        }
     })
   }
 }
