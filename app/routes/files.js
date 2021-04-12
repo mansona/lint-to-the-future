@@ -1,6 +1,8 @@
 import Route from '@ember/routing/route';
 
 export default class FilesRoute extends Route {
+  classNames = ['noscroll'];
+
   model(params) {
     let application = this.modelFor('application');
     let ruleValue = application[params.id];

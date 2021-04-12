@@ -59,3 +59,7 @@ a {
   align-items: baseline;
   justify-content: space-between;
 }
+
+.noscroll {
+  overflow: hidden;
+}
