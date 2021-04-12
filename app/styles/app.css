@@ -1,10 +1,34 @@
 body {
+  background-color: #EDF7D2;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin: 20px;
+}
+a {
+  color: #5C8001;
+}
+.graphs {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(600px, 100%), 1fr));
   grid-gap: 20px
 }
 
+.lttf-chart {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
 .modal {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.25);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+.modal-content {
   position: fixed;
   top: 50px;
   bottom: 50px;
@@ -12,11 +36,21 @@ body {
   left: 50px;
 
   border-radius: 25px;
-  padding: 25px;
-  background-color: #eee;
+  padding: 0 25px 25px;
+  background-color: white;
+  overflow: scroll;
 }
 
-.modal > h1 {
+.modal-content > .header {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}
+
+.modal-content > h1 {
   margin-top: 0;
 }
 
@@ -24,4 +58,8 @@ body {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+}
+
+.noscroll {
+  overflow: hidden;
 }

@@ -1,8 +1,29 @@
 <div class="modal">
-  <h1> Files </h1>
-  <ul>
-    {{#each @model as |file|}}
-      <li>{{file}}</li>
-    {{/each}}
-  </ul>
+  <div class="modal-content">
+  <div class="header"><h1> Files {{@model.rule}} </h1><LinkTo @route="index"><svg
+    width="12"
+    height="12"
+    viewBox="0 0 12 12"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M0.577092 1.22363C0.869985 0.930735 1.34486 0.930735 1.63775 1.22363L10.1471 9.73301C10.44 10.0259 10.44 10.5008 10.1471 10.7937V10.7937C9.85424 11.0866 9.37936 11.0866 9.08647 10.7937L0.577092 2.28429C0.284198 1.9914 0.284199 1.51652 0.577092 1.22363V1.22363Z"
+      fill="black"
+    />
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M10.1474 1.22364C10.4403 1.51653 10.4403 1.9914 10.1474 2.2843L1.63802 10.7937C1.34513 11.0866 0.870258 11.0866 0.577364 10.7937V10.7937C0.284471 10.5008 0.284471 10.0259 0.577364 9.73302L9.08674 1.22364C9.37964 0.930744 9.85451 0.930744 10.1474 1.22364V1.22364Z"
+      fill="black"
+    />
+  </svg></LinkTo> </div>
+    <ul>
+      {{#each @model.fileList as |file|}}
+        <li>{{file}}</li>
+      {{/each}}
+    </ul>
+  </div>
 </div>

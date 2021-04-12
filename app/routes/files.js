@@ -1,9 +1,10 @@
 import Route from '@ember/routing/route';
 
 export default class FilesRoute extends Route {
+  classNames = ['noscroll'];
+
   model(params) {
     let application = this.modelFor('application');
-
     let ruleValue = application[params.id];
     let keys = Object.keys(ruleValue);
 
@@ -12,6 +13,6 @@ export default class FilesRoute extends Route {
     let max = keys.sort((a, b) => a > b)[keys.length - 1];
 
     // this just returns the most recent list of files
-    return ruleValue[max];
+    return {fileList: ruleValue[max], rule: params.id};
   }
 }
