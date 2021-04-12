@@ -36,13 +36,20 @@ a {
   left: 50px;
 
   border-radius: 25px;
-  padding: 25px;
+  padding: 0 25px 25px;
   background-color: white;
+  overflow: scroll;
 }
+
 .modal-content > .header {
+  background-color: white;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
 }
+
 .modal-content > h1 {
   margin-top: 0;
 }
