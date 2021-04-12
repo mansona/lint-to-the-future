@@ -21,5 +21,6 @@ jobs:
         with:
           node-version: 10.x
       - uses: mansona/npm-lockfile-version@v1
+      - run: npm i -g npm@7
       - run: npm ci
       - run: npm test
