@@ -69,8 +69,8 @@ async function main() {
   let currentPackageJSON = require(join(process.cwd(), 'package.json'));
 
   let lttfPluginsNames = [
-    ...Object.keys(currentPackageJSON.devDependencies),
-    ...Object.keys(currentPackageJSON.dependencies)
+    ...Object.keys(currentPackageJSON.devDependencies || {}),
+    ...Object.keys(currentPackageJSON.dependencies || {})
   ].filter(dep => dep.startsWith('lint-to-the-future-'));
 
   let lttfPlugins = lttfPluginsNames.map(name => ({
