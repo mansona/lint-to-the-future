@@ -1,10 +1,11 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+import { guidFor } from '@ember/object/internals';
 
 import { Chart } from "frappe-charts/dist/frappe-charts.min.esm";
 
 function normaliseData(data) {
-  console.log(data);
   let keys = Object.keys(data);
 
   let output = {};
@@ -34,7 +35,46 @@ function normaliseData(data) {
   return output;
 }
 
+function weeklyData(data) {
+
+  let newData = {};
+
+  let keys = Object.keys(data);
+
+  for(let x = 0; x < keys.length; x += 7) {
+    newData[keys[x]] = data[keys[x]];
+  }
+
+  newData[keys[keys.length -1]] = data[keys[keys.length -1]];
+
+  console.log({newData, data, newDataLength: Object.keys(newData).length, dataLength: Object.keys(data).length})
+  return newData;
+}
+
+function getData(processedData, ruleName) {
+  return {
+    labels: Object.keys(processedData),
+    datasets: [
+        {
+            name: ruleName,
+            type: "line",
+            values: Object.values(processedData)
+        }
+    ],
+    yMarkers: [
+        {
+            label: '',
+            value: 0,
+            type: 'solid'
+        }
+    ]
+  };
+}
+
 export default class ChartComponent extends Component {
+  @tracked
+  timeSeries = 'daily';
+
   get plugin() {
     return this.args.rule.split(':')[0];
   }
@@ -43,29 +83,33 @@ export default class ChartComponent extends Component {
     return this.args.rule.split(':')[1];
   }
 
+  get guid() {
+    return guidFor(this);
+  }
+
+  @action
+  selectTimeSeries(series) {
+    this.timeSeries = series;
+    let processedData = normaliseData(this.args.data);
+
+    if (series === 'weekly') {
+      processedData = weeklyData(processedData);
+    }
+
+    this.chart.update(getData(processedData, this.ruleName));
+  }
+
   @action
   renderChart(element) {
     let processedData = normaliseData(this.args.data);
 
-    console.log({processedData});
-
-    const data = {
-        labels: Object.keys(processedData),
-        datasets: [
-            {
-                name: this.ruleName,
-                type: "line",
-                values: Object.values(processedData)
-            }
-        ],
-        yMarkers: [
-            {
-                label: '',
-                value: 0,
-                type: 'solid'
-            }
-        ]
+    // set the default to weekly data if too many datapoints
+    if (Object.keys(processedData).length > 40) {
+      processedData = weeklyData(processedData);
+      this.timeSeries = 'weekly';
     }
+
+    const data = getData(processedData, this.ruleName);
 
     this.chart = new Chart(element, {
         data: data,
