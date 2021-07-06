@@ -4,7 +4,6 @@ import { action } from '@ember/object';
 import { Chart } from "frappe-charts/dist/frappe-charts.min.esm";
 
 function normaliseData(data) {
-  console.log(data);
   let keys = Object.keys(data);
 
   let output = {};
@@ -46,8 +45,6 @@ export default class ChartComponent extends Component {
   @action
   renderChart(element) {
     let processedData = normaliseData(this.args.data);
-
-    console.log({processedData});
 
     const data = {
         labels: Object.keys(processedData),
