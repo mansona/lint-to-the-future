@@ -1,4 +1,4 @@
-# lint-to-the-future
+# Lint to the Future 🚀
 
 LintToTheFuture is a modern way to progressively update your entire codebase to the latest best practices. It has a number of tools that work together to manage linting rules and provides a sustainable way to add new rules to existing codebases without slowing down your development
 
