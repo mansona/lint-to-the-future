@@ -1,3 +1,7 @@
+v0.6.1 / 2021-09-15
+==================
+* remove incorrect peer-dependency on eslint #7 from @mansona
+
 v0.6.0 / 2021-07-06
 ==================
 * Add weekly charts #6 from @mansona
