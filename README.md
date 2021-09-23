@@ -33,7 +33,7 @@ This project is still in alpha phase, so we will add new sub-sections to Usage a
 Using the `eslint` plugin as an example: running the cli application will automatically run `eslint` on your codebase and add file-based ignores to that file.
 
 ```
-npx lint-to-the-future
+npx lint-to-the-future ignore
 ```
 
 After running this process you should be able to run `eslint` on your project again and it will show no more errors.
