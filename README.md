@@ -16,7 +16,13 @@ on its own LintToTheFuture doesn't do anything by itself, you should also instal
 npm i --save-dev lint-to-the-future-eslint
 ```
 
+### Plugins
+
 LintToTheFuture will automatically load each plugin (any package you have installed locally starting with `lint-to-the-future-`) and run them in order.
+
+You can write your own plugin, or use one from the existing list:
+- For Ember apps: [`lint-to-the-future-ember-template`](https://github.com/mansona/lint-to-the-future-ember-template)
+- For all JavaScript apps: [`lint-to-the-future-eslint`](https://github.com/mansona/lint-to-the-future-eslint)
 
 ## Usage
 
