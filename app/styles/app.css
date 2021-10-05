@@ -90,3 +90,26 @@ a {
 .stv-radio-button:checked + label {
   background-color: #3277b3;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1A1A2E;
+    color: white;
+  }
+  a {
+    color: #FBBF24;
+  }
+  .lttf-chart {
+    background-color: #16213E;
+  }
+  .chart-container .axis {
+    fill: white !important;
+  }
+
+  .modal-content {
+    background-color: #16213E;
+  }
+  svg.close path {
+    fill: white;
+  }
+}
