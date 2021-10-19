@@ -8,7 +8,6 @@ import { Chart } from "frappe-charts/dist/frappe-charts.min.esm";
 import normaliseData from '../utils/normalise-data';
 
 function weeklyData(data) {
-
   let newData = {};
 
   let keys = Object.keys(data);
@@ -19,7 +18,6 @@ function weeklyData(data) {
 
   newData[keys[keys.length -1]] = data[keys[keys.length -1]];
 
-  console.log({newData, data, newDataLength: Object.keys(newData).length, dataLength: Object.keys(data).length})
   return newData;
 }
 
