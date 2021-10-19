@@ -5,38 +5,9 @@ import { guidFor } from '@ember/object/internals';
 
 import { Chart } from "frappe-charts/dist/frappe-charts.min.esm";
 
-function normaliseData(data) {
-  let keys = Object.keys(data);
-
-  let output = {};
-
-  let dates = keys.map(key => new Date(key));
-
-  let min = Math.min(...dates);
-  let max = Math.max(...dates);
-
-  let normalisedKeys = [];
-  let currentDate = new Date(min);
-
-  while (currentDate <= max) {
-    normalisedKeys.push(currentDate.toISOString().split('T')[0]);
-
-    currentDate.setDate(currentDate.getDate() + 1);
-  }
-
-  let lastValue;
-  normalisedKeys.forEach(key => {
-    if(data[key]) {
-      lastValue = data[key].length
-    }
-    output[key] = lastValue;
-  })
-
-  return output;
-}
+import normaliseData from '../utils/normalise-data';
 
 function weeklyData(data) {
-
   let newData = {};
 
   let keys = Object.keys(data);
@@ -47,7 +18,6 @@ function weeklyData(data) {
 
   newData[keys[keys.length -1]] = data[keys[keys.length -1]];
 
-  console.log({newData, data, newDataLength: Object.keys(newData).length, dataLength: Object.keys(data).length})
   return newData;
 }
 
@@ -90,7 +60,7 @@ export default class ChartComponent extends Component {
   @action
   selectTimeSeries(series) {
     this.timeSeries = series;
-    let processedData = normaliseData(this.args.data);
+    let processedData = normaliseData(this.args.data, this.args.highestDate);
 
     if (series === 'weekly') {
       processedData = weeklyData(processedData);
@@ -101,7 +71,7 @@ export default class ChartComponent extends Component {
 
   @action
   renderChart(element) {
-    let processedData = normaliseData(this.args.data);
+    let processedData = normaliseData(this.args.data, this.args.highestDate);
 
     // set the default to weekly data if too many datapoints
     if (Object.keys(processedData).length > 40) {
