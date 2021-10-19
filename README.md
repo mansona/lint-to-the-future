@@ -23,6 +23,7 @@ LintToTheFuture will automatically load each plugin (any package you have instal
 You can write your own plugin, or use one from the existing list:
 - For Ember apps: [`lint-to-the-future-ember-template`](https://github.com/mansona/lint-to-the-future-ember-template)
 - For all JavaScript apps: [`lint-to-the-future-eslint`](https://github.com/mansona/lint-to-the-future-eslint)
+- For styles [`lint-to-the-future-stylelint`](https://github.com/mansona/lint-to-the-future-stylelint)
 
 ## Usage
 
