@@ -62,7 +62,7 @@ export default class ChartComponent extends Component {
   @action
   selectTimeSeries(series) {
     this.timeSeries = series;
-    let processedData = normaliseData(this.args.data);
+    let processedData = normaliseData(this.args.data, this.args.highestDate);
 
     if (series === 'weekly') {
       processedData = weeklyData(processedData);
@@ -73,7 +73,7 @@ export default class ChartComponent extends Component {
 
   @action
   renderChart(element) {
-    let processedData = normaliseData(this.args.data);
+    let processedData = normaliseData(this.args.data, this.args.highestDate);
 
     // set the default to weekly data if too many datapoints
     if (Object.keys(processedData).length > 40) {

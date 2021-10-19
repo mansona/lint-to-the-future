@@ -14,7 +14,7 @@ module('Unit | Utility | normalise-data', function() {
   test('it normalises the data', function(assert) {
     let timeSeriesData = timeSeries(zeroFixture);
 
-    let result = normaliseData(timeSeriesData['lint-to-the-future-eslint:ember/no-empty-glimmer-component-classes']);
+    let result = normaliseData(timeSeriesData['lint-to-the-future-eslint:ember/no-empty-glimmer-component-classes'], '2021-04-10');
 
     assert.deepEqual(result, {
       "2021-03-18": 4,
@@ -34,6 +34,7 @@ module('Unit | Utility | normalise-data', function() {
       "2021-04-01": 3,
       "2021-04-02": 2,
       "2021-04-03": 1,
+      "2021-04-04": 0,
     });
   });
 });

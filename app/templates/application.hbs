@@ -1,8 +1,8 @@
 <h1>Lint to the Future Dashboard</h1>
 <div class="graphs">
-{{#each-in @model as |key value|}}
-  <Chart @rule={{key}} @data={{value}} />
-{{/each-in}}
+  {{#each-in @model.data as |key value|}}
+    <Chart @rule={{key}} @data={{value}} @highestDate={{@model.highestDate}} />
+  {{/each-in}}
 </div>
 
 

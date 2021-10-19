@@ -9,6 +9,21 @@ export default class ApplicationRoute extends Route {
   async model() {
     let data = await (await fetch(`${env.rootURL}data.json`)).json();
 
-    return timeSeries(data);
+    let timeSeriesData =  timeSeries(data);
+
+    let highestDate;
+
+    for (const rule in timeSeriesData) {
+      for (const date in timeSeriesData[rule]) {
+        if(!highestDate || highestDate < date) {
+          highestDate = date;
+        }
+      }
+    }
+
+    return {
+      data: timeSeriesData,
+      highestDate,
+    }
   }
 }

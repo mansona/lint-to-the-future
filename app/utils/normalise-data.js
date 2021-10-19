@@ -1,4 +1,4 @@
-export default function normaliseData(data) {
+export default function normaliseData(data, highestDate) {
   let keys = Object.keys(data);
 
   let output = {};
@@ -12,6 +12,9 @@ export default function normaliseData(data) {
   let max = Math.max(...dates);
   let maxDate = new Date(max);
   let maxDateUTC = Date.UTC(maxDate.getUTCFullYear(), maxDate.getUTCMonth(), maxDate.getUTCDate());
+
+  let highestDateObj = new Date(highestDate);
+  let highestDateUTC = Date.UTC(highestDateObj.getUTCFullYear(), highestDateObj.getUTCMonth(), highestDateObj.getUTCDate());
 
   let normalisedKeys = [];
 
@@ -30,6 +33,11 @@ export default function normaliseData(data) {
     }
     output[key] = lastValue;
   })
+
+  // if the currentDate is less than the highestDate then the chart should go to zero
+  if (Date.UTC(currentDate.getUTCFullYear(), currentDate.getUTCMonth(), currentDate.getUTCDate()) <= highestDateUTC) {
+    output[new Date(currentDate).toISOString().split('T')[0]] = 0;
+  }
 
   return output;
 }
