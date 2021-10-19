@@ -1,3 +1,10 @@
+v0.7.0 / 2021-10-19
+==================
+* add attribution links #11 from @mansona
+* Make sure graphs can actually go to zero #10 from @mansona
+* Adds dark mode #9 from @MinThaMie
+* [DOC] Add plugins to the README #8 from @jenweber
+
 v0.6.1 / 2021-09-15
 ==================
 * remove incorrect peer-dependency on eslint #7 from @mansona
