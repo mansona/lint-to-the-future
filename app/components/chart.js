@@ -5,35 +5,7 @@ import { guidFor } from '@ember/object/internals';
 
 import { Chart } from "frappe-charts/dist/frappe-charts.min.esm";
 
-function normaliseData(data) {
-  let keys = Object.keys(data);
-
-  let output = {};
-
-  let dates = keys.map(key => new Date(key));
-
-  let min = Math.min(...dates);
-  let max = Math.max(...dates);
-
-  let normalisedKeys = [];
-  let currentDate = new Date(min);
-
-  while (currentDate <= max) {
-    normalisedKeys.push(currentDate.toISOString().split('T')[0]);
-
-    currentDate.setDate(currentDate.getDate() + 1);
-  }
-
-  let lastValue;
-  normalisedKeys.forEach(key => {
-    if(data[key]) {
-      lastValue = data[key].length
-    }
-    output[key] = lastValue;
-  })
-
-  return output;
-}
+import normaliseData from '../utils/normalise-data';
 
 function weeklyData(data) {
 
