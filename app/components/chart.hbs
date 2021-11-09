@@ -9,5 +9,7 @@
   	<label for="{{this.guid}}-daily">Daily</label>
   	<input type="radio" class="stv-radio-button" name="{{this.guid}}" value="2" id="{{this.guid}}-weekly" checked={{eq this.timeSeries "weekly"}} {{on "click" (fn this.selectTimeSeries "weekly")}}/>
   	<label for="{{this.guid}}-weekly">Weekly</label>
+    <input type="radio" class="stv-radio-button" name="{{this.guid}}" value="3" id="{{this.guid}}-monthly" checked={{eq this.timeSeries "monthly"}} {{on "click" (fn this.selectTimeSeries "monthly")}}/>
+  	<label for="{{this.guid}}-monthly">Monthly</label>
   </div>
 </div>
