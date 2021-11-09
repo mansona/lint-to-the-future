@@ -21,6 +21,21 @@ function weeklyData(data) {
   return newData;
 }
 
+function monthlyData(data) {
+  let newData = {};
+
+  let keys = Object.keys(data);
+
+  for(let x = 0; x < keys.length; x += 30) {
+    newData[keys[x]] = data[keys[x]];
+  }
+
+  newData[keys[keys.length -1]] = data[keys[keys.length -1]];
+
+  return newData;
+}
+
+
 function getData(processedData, ruleName) {
   return {
     labels: Object.keys(processedData),
@@ -66,6 +81,10 @@ export default class ChartComponent extends Component {
       processedData = weeklyData(processedData);
     }
 
+    if (series === 'monthly') {
+      processedData = monthlyData(processedData)
+    }
+
     this.chart.update(getData(processedData, this.ruleName));
   }
 
@@ -74,7 +93,10 @@ export default class ChartComponent extends Component {
     let processedData = normaliseData(this.args.data, this.args.highestDate);
 
     // set the default to weekly data if too many datapoints
-    if (Object.keys(processedData).length > 40) {
+    if (Object.keys(processedData).length > 100) {
+      processedData = monthlyData(processedData);
+      this.timeSeries = 'monthly';
+    } else if (Object.keys(processedData).length > 40) {
       processedData = weeklyData(processedData);
       this.timeSeries = 'weekly';
     }
