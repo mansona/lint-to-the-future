@@ -1,3 +1,8 @@
+v0.8.0 / 2021-11-09
+==================
+* Adds monthly view to the overview, with a 30 day grouping #14 from @MinThaMie
+* [docs] add lint-to-the-future-stylelint to readme #12 from @mansona
+
 v0.7.0 / 2021-10-19
 ==================
 * add attribution links #11 from @mansona
