@@ -48,3 +48,9 @@ After running this process you should be able to run `eslint` on your project ag
 The point of LintToTheFuture is to allow you to **progressively** update your codebase using new lint rules without overwhelming you with the task. You can easily ignore lint rules using project-based ignores in your config files but that doesn't prevent you from making the same errors in new files.
 
 We chose to do the ignores on a file basis as it is a perfect balance and it means that the tracking/graphing aspects of LintToTheFuture provide you with achievable goals, especially in large codebases.
+
+### Why would you run this instead of just running `lint fix` to fix as many problems as possible
+
+This tool is designed to make it as easy as possible to add a new lint rule to your project and having a massive PR that changes the code in hundreds of files is not very easy to review. I talk about this in a blog post about [keeping a clean git history](https://simplabs.com/blog/2021/05/26/keeping-a-clean-git-history/), but if you want to add a new lint rule to a project you should consider running lint-to-the-future to add your ignores and then either remove each type of ignore while fixing all files in a follow up PR or remove them one file at a time (depending on how big your project is)
+
+This is especially important if you're in the middle of a big upgrade PR where you are upgrading dependencies (and sometimes code if you're using something like [ember-cli-update](https://github.com/ember-cli/ember-cli-update)) because you don't want to make an already big PR even bigger. 
