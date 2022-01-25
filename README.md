@@ -1,6 +1,6 @@
 # Lint to the Future 🚀
 
-LintToTheFuture is a modern way to progressively update your entire codebase to the latest best practices. It has a number of tools that work together to manage linting rules and provides a sustainable way to add new rules to existing codebases without slowing down your development
+LintToTheFuture (LTTF) is a modern way to progressively update your entire codebase to the latest best practices. It has a number of tools that work together to manage linting rules and provides a sustainable way to add new rules to existing codebases without slowing down your development
 
 ## Installation
 
@@ -10,7 +10,7 @@ You should install this as a dev-dependency of your project
 npm i --save-dev lint-to-the-future
 ```
 
-on its own LintToTheFuture doesn't do anything by itself, you should also install some plugins. The first plugin written for LintToTheFuture was the eslint plugin which you can install using the following:
+on its own LTTF doesn't do anything by itself, you should also install some plugins. The first plugin written for LTTF was the eslint plugin which you can install using the following:
 
 ```
 npm i --save-dev lint-to-the-future-eslint
@@ -18,7 +18,7 @@ npm i --save-dev lint-to-the-future-eslint
 
 ### Plugins
 
-LintToTheFuture will automatically load each plugin (any package you have installed locally starting with `lint-to-the-future-`) and run them in order.
+LTTF will automatically load each plugin (any package you have installed locally starting with `lint-to-the-future-`) and run them in order.
 
 You can write your own plugin, or use one from the existing list:
 - For Ember apps: [`lint-to-the-future-ember-template`](https://github.com/mansona/lint-to-the-future-ember-template)
