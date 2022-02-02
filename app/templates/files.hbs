@@ -23,7 +23,7 @@
   </svg></LinkTo> </div>
     <ul>
       {{#each @model.fileList as |file|}}
-        <li>{{file}}</li>
+        <li data-test-file>{{file}}</li>
       {{/each}}
     </ul>
   </div>
