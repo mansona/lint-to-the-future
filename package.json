@@ -54,6 +54,7 @@
     "ember-resolver": "^8.0.0",
     "ember-source": "~3.18.0",
     "ember-template-lint": "^2.6.0",
+    "ember-test-selectors": "^6.0.0",
     "ember-welcome-page": "^4.0.0",
     "eslint": "^6.8.0",
     "eslint-plugin-ember": "^8.4.0",
@@ -78,5 +79,10 @@
     "import-cwd": "^3.0.0",
     "minimist": "^1.2.5",
     "node-fetch": "^2.6.0"
+  },
+  "ember-addon": {
+    "paths": [
+      "lib/testem-middleware"
+    ]
   }
 }

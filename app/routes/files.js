@@ -5,7 +5,7 @@ export default class FilesRoute extends Route {
 
   model(params) {
     let application = this.modelFor('application');
-    let ruleValue = application[params.id];
+    let ruleValue = application.data[params.id];
     let keys = Object.keys(ruleValue);
 
     // the keys are ISO dates, so sorting them alphabetically always sorts them
