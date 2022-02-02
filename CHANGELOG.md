@@ -1,3 +1,11 @@
+v1.0.0 / 2022-02-02
+==================
+
+Lint to the Future v1.0 is here 🎉 There are no breaking changes with this release it's just time to declare this project as stable!
+
+* Add tests & fix bug with view files route #19 from @mansona
+* Update README.md #18 from @locks
+
 v0.8.0 / 2021-11-09
 ==================
 * Adds monthly view to the overview, with a 30 day grouping #14 from @MinThaMie
