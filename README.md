@@ -21,9 +21,12 @@ npm i --save-dev lint-to-the-future-eslint
 LTTF will automatically load each plugin (any package you have installed locally starting with `lint-to-the-future-`) and run them in order.
 
 You can write your own plugin, or use one from the existing list:
+
 - For Ember apps: [`lint-to-the-future-ember-template`](https://github.com/mansona/lint-to-the-future-ember-template)
 - For all JavaScript apps: [`lint-to-the-future-eslint`](https://github.com/mansona/lint-to-the-future-eslint)
 - For styles [`lint-to-the-future-stylelint`](https://github.com/mansona/lint-to-the-future-stylelint)
+
+To find out some more information about how to write your own plugin, check out the [plugin docs](./docs/plugin-development.md).
 
 ## Usage
 
@@ -53,4 +56,4 @@ We chose to do the ignores on a file basis as it is a perfect balance and it mea
 
 This tool is designed to make it as easy as possible to add a new lint rule to your project and having a massive PR that changes the code in hundreds of files is not very easy to review. I talk about this in a blog post about [keeping a clean git history](https://simplabs.com/blog/2021/05/26/keeping-a-clean-git-history/), but if you want to add a new lint rule to a project you should consider running lint-to-the-future to add your ignores and then either remove each type of ignore while fixing all files in a follow up PR or remove them one file at a time (depending on how big your project is)
 
-This is especially important if you're in the middle of a big upgrade PR where you are upgrading dependencies (and sometimes code if you're using something like [ember-cli-update](https://github.com/ember-cli/ember-cli-update)) because you don't want to make an already big PR even bigger. 
+This is especially important if you're in the middle of a big upgrade PR where you are upgrading dependencies (and sometimes code if you're using something like [ember-cli-update](https://github.com/ember-cli/ember-cli-update)) because you don't want to make an already big PR even bigger.
