@@ -1,3 +1,8 @@
+v1.1.0 / 2022-05-17
+==================
+* try importing an esm module before reverting to `importCwd` #24 from @mansona
+* add documentation for plugin developers #23 from @mansona
+
 v1.0.0 / 2022-02-02
 ==================
 
