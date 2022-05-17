@@ -73,10 +73,24 @@ async function main() {
     ...Object.keys(currentPackageJSON.dependencies || {})
   ].filter(dep => dep.startsWith('lint-to-the-future-'));
 
-  let lttfPlugins = lttfPluginsNames.map(name => ({
-    import: importCwd(name),
-    name,
-  }));
+  let lttfPlugins = [];
+
+  for (const name of lttfPluginsNames) {
+    let mod;
+
+    try {
+      // eslint-disable-next-line node/no-unsupported-features/es-syntax
+      mod = await import(join(process.cwd(), 'node_modules', name, 'main.mjs'));
+    } catch (err) {
+      // fallback to trying importCwd
+      mod = importCwd(name);
+    }
+
+    lttfPlugins.push({
+      import: mod,
+      name,
+    })
+  }
 
   switch (argv._[0]) {
     case 'output':
