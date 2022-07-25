@@ -19,12 +19,22 @@ async function list(lttfPlugins) {
   let previousResults = {}
 
   if (argv['previous-results']) {
-    const response = await fetch(argv['previous-results']);
+    let previousResultsLocation = argv['previous-results'];
+    if (previousResultsLocation.match(/((http(s?)):\/\/)/)) {
+      const response = await fetch(argv['previous-results']);
 
-    if(response.ok) {
-      previousResults = await response.json();
+      if(response.ok) {
+        previousResults = await response.json();
+      } else {
+        console.warn(`Error ${response.status} when downloading previous results. Previous results ignored`);
+      }
     } else {
-      console.warn(`Error ${response.status} when downloading previous results. Previous results ignored`);
+      try {
+        let file = readFileSync(previousResultsLocation);
+        previousResults = JSON.parse(file);
+      } catch {
+        console.warn(`Error ${previousResultsLocation} could not be found. Previous results ignored`);
+      }
     }
   }
 
