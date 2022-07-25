@@ -1,3 +1,7 @@
+v1.2.0 / 2022-07-25
+==================
+* Add support for --previousResults to point at a local file instead of a link #25 from @Mikek2252
+
 v1.1.0 / 2022-05-17
 ==================
 * try importing an esm module before reverting to `importCwd` #24 from @mansona
