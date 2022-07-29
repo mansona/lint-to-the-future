@@ -44,6 +44,39 @@ After running this process you should be able to run `eslint` on your project ag
 
 **Note:** we don't currently add file-based ignores for warnings as they don't generally break CI in the most common configurations.
 
+## Lint to the Future Dashboard
+
+Tracking all your lint disables can be a pain, so Lint to the Future can generate a dashboard webpage that clearly shows how many of each disables there are and how you are progressing with removals.
+To see it in action, check out [ember-styleguide's dashboard](https://ember-learn.github.io/ember-styleguide/)
+
+### Setting up the dashboard for public gh-pages
+
+The easiest way to set up the Lint to the Future Dashboard is to use the [lint-to-the-future-dashboard-action](https://github.com/mansona/lint-to-the-future-dashboard-action) an example of the setup can be seen in the readme.
+
+**Note:** The lint-to-the-future-dashboard-action currently only supports public gh-pages.
+
+### Setting up the dashboard for manual deployment
+
+The following command can run within your application directory and will generate the dashboard web application and take a data snapshot of your current lint disables. If you have previous results, it will collate them to create a graph over time.
+```
+npx lint-to-the-future output -o <output-dir> --rootUrl <root-url> --previous-results <path-to-previous-results>
+```
+```
+-o <required>
+  This argument specifies the output directory of dashboard application.
+
+--rootUrl <optional>
+  This argument is required if the dashboard is not hosted on your servers rootUrl.
+  e.g. the ember-styleguide dashboard URL is https://ember-learn.github.io/ember-styleguide/ so --rootUrl ember-styleguide is required
+
+--previous-results <optional>
+  This argument can accept either a local path or a URL.
+  As the name suggests this should be a path or URL to the previous data.json file that was generated when this command was last run.
+  This argument is only required if you want historical data.
+```
+
+After sucessfully running the command you will have the dashboard application generated in your chosen directory ready to be deployed to your chosen environment.
+
 ## Frequently Asked Questions
 
 ### Why do you use file based ignores instead of line-based or projected-wide
