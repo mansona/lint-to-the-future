@@ -16,7 +16,8 @@ and it will automatically add **file-based ignore directives** to each of the fi
 
 When you are done adding file-based ignore directives to each of your files you can put together a dashboard that keeps track of which files you still need to come back and fix. The dashboard looks like this
 
-DASHBOARD
+![ember-learn github io_ember-styleguide_](https://user-images.githubusercontent.com/594890/193256435-0355d6be-c39f-4901-89a1-58dd6b871129.png)
+
 
 Keep reading to find out how to set it up 📚
 
