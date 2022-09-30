@@ -74,7 +74,7 @@ async function output(lttfPlugins, outputPath, rootUrl, previousResultsPath) {
   writeFileSync(join(outputPath, 'data.json'), JSON.stringify(ouputResult));
 }
 
-async function main() {
+async function getLttfPlugins() {
   let currentPackageJSON = require(join(process.cwd(), 'package.json'));
 
   let lttfPluginsNames = [
@@ -100,6 +100,11 @@ async function main() {
       name,
     })
   }
+  return lttfPlugins;
+}
+
+async function main() {
+  let lttfPlugins = await getLttfPlugins();
 
   switch (argv._[0]) {
     case 'output':
