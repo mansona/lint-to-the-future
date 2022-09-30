@@ -47,31 +47,31 @@ async function list(lttfPlugins, previousResultsPath) {
   return previousResults;
 }
 
-async function output(lttfPlugins) {
-  if (!argv.o) {
+async function output(lttfPlugins, outputPath, rootUrl, previousResultsPath) {
+  if (!output) {
     console.error('You must provide an output directory to `output` with -o');
   }
 
-  const ouputResult = await list(lttfPlugins);
+  const ouputResult = await list(lttfPlugins, previousResultsPath);
 
-  await copy(join(__dirname, 'dist'), argv.o);
+  await copy(join(__dirname, 'dist'), outputPath);
 
-  if(argv.rootUrl) {
-    let index = readFileSync(join(argv.o, 'index.html'), 'utf8');
+  if(rootUrl) {
+    let index = readFileSync(join(outputPath, 'index.html'), 'utf8');
     let regex = /<meta name="lint-to-the-future\/config\/environment" content="(.*)" \/>/;
     let envContentString = index.match(regex)[1];
     let envContent =  JSON.parse(decodeURIComponent(envContentString));
-    envContent.rootURL = `/${argv.rootUrl}/`;
+    envContent.rootURL = `/${rootUrl}/`;
     console.log(envContent);
     writeFileSync(
-      join(argv.o, 'index.html'),
+      join(outputPath, 'index.html'),
       index
         .replace(regex, `<meta name="lint-to-the-future/config/environment" content="${encodeURIComponent(JSON.stringify(envContent))}" />`)
-        .replace(/"\/assets\//g, `"/${argv.rootUrl}/assets/`),
+        .replace(/"\/assets\//g, `"/${rootUrl}/assets/`),
     );
   }
 
-  writeFileSync(join(argv.o, 'data.json'), JSON.stringify(ouputResult));
+  writeFileSync(join(outputPath, 'data.json'), JSON.stringify(ouputResult));
 }
 
 async function main() {
@@ -103,7 +103,7 @@ async function main() {
 
   switch (argv._[0]) {
     case 'output':
-      await output(lttfPlugins);
+      await output(lttfPlugins, argv.o, argv.rootUrl, argv['previous-results']);
 
       break;
 
