@@ -4,10 +4,9 @@ const { join } = require('path');
 const { writeFileSync, readFileSync } = require('fs');
 const { copy } = require('fs-extra');
 const importCwd = require('import-cwd');
-const minimist = require('minimist');
 const fetch = require('node-fetch');
-
-const argv = minimist(process.argv.slice(2));
+const { Command } = require('commander');
+const program = new Command();
 
 async function list(lttfPlugins, previousResultsPath) {
   let pluginResults = {};
@@ -103,41 +102,53 @@ async function getLttfPlugins() {
   return lttfPlugins;
 }
 
-async function main() {
-  let lttfPlugins = await getLttfPlugins();
+program
+  .name('lint-to-the-future')
+  .description('A modern way to progressively update your code to the best practices using lint rules')
+  .version(require(join(__dirname, 'package.json')).version);
 
-  switch (argv._[0]) {
-    case 'output':
-      await output(lttfPlugins, argv.o, argv.rootUrl, argv['previous-results']);
+program
+  .command('output')
+  .description('Generates a dashboard webpage to help track which files have file-based ignore directives in them')
+  .requiredOption('-o, --output <path>', 'Output path for dashboard webpage')
+  .option('--rootUrl', 'Required if the dashboard is not hosted on your servers rootUrl')
+  .option('--previous-results <path|url>', 'This should be a path or URL to the previous data.json file that was generated when this command was last run')
+  .action(async ({output: outputPath, rootUrl, previousResults}) => {
+    let lttfPlugins = await getLttfPlugins();
+    output(lttfPlugins, outputPath, rootUrl, previousResults);
+  })
 
-      break;
+program
+  .command('list')
+  .description('prints the current files with file-based lint ignore directives')
+  .option('-o, --output <path>', 'output path for lttf list')
+  .option('--stdout', 'print lttf list to console')
+  .option('--previous-results <path|url>', 'This should be a path or URL to the previous data.json file that was generated when this command was last run')
+  .action(async ({ output: outputPath, stdout, previousResults }) => {
+    if (!outputPath && !stdout) {
+      console.error('You must provide an output path to `list` with -o or pass --stdout');
+    }
+  
+    let lttfPlugins = await getLttfPlugins();
+    const listResult = await list(lttfPlugins, previousResults);
 
-    case 'list':
-      if (!argv.o && !argv.stdout) {
-        console.error('You must provide an output path to `list` with -o or pass --stdout');
-      }
+    if (stdout) {
+      console.log(listResult);
+    }
 
-      // eslint-disable-next-line
-      const listResult = await list(lttfPlugins, argv['previous-results']);
+    if (outputPath) {
+      writeFileSync(outputPath, JSON.stringify(listResult));
+    }
+  });
 
-      if (argv.stdout) {
-        console.log(listResult);
-      }
+program
+  .command('ignore')
+  .description('Add file-based ignores to any file that is currently erroring')
+  .action(async () => {
+    let lttfPlugins = await getLttfPlugins();
+    for (let plugin of lttfPlugins) {
+      await plugin.import.ignoreAll();
+    }
+  });
 
-      if (argv.o) {
-        writeFileSync(argv.o, JSON.stringify(listResult));
-      }
-
-      break;
-    case 'ignore':
-    default:
-      for (let plugin of lttfPlugins) {
-        await plugin.import.ignoreAll();
-      }
-  }
-}
-
-main().catch((error) => {
-  process.exitCode = 1;
-  console.error(error);
-});
+program.parse();
