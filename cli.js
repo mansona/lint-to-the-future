@@ -9,7 +9,7 @@ const fetch = require('node-fetch');
 
 const argv = minimist(process.argv.slice(2));
 
-async function list(lttfPlugins) {
+async function list(lttfPlugins, previousResultsPath) {
   let pluginResults = {};
 
   for (let plugin of lttfPlugins) {
@@ -18,10 +18,9 @@ async function list(lttfPlugins) {
 
   let previousResults = {}
 
-  if (argv['previous-results']) {
-    let previousResultsLocation = argv['previous-results'];
-    if (previousResultsLocation.match(/((http(s?)):\/\/)/)) {
-      const response = await fetch(argv['previous-results']);
+  if (previousResultsPath) {
+    if (previousResultsPath.match(/((http(s?)):\/\/)/)) {
+      const response = await fetch(previousResultsPath);
 
       if(response.ok) {
         previousResults = await response.json();
@@ -30,10 +29,10 @@ async function list(lttfPlugins) {
       }
     } else {
       try {
-        let file = readFileSync(previousResultsLocation);
+        let file = readFileSync(previousResultsPath);
         previousResults = JSON.parse(file);
       } catch {
-        console.warn(`Error ${previousResultsLocation} could not be found. Previous results ignored`);
+        console.warn(`Error ${previousResultsPath} could not be found. Previous results ignored`);
       }
     }
   }
@@ -114,7 +113,7 @@ async function main() {
       }
 
       // eslint-disable-next-line
-      const listResult = await list(lttfPlugins);
+      const listResult = await list(lttfPlugins, argv['previous-results']);
 
       if (argv.stdout) {
         console.log(listResult);
