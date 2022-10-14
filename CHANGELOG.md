@@ -1,3 +1,8 @@
+v1.3.0 / 2022-10-14
+==================
+* Move from minimist to commander #28 from @Mikek2252
+* Update README.md #26 from @Mikek2252
+
 v1.2.0 / 2022-07-25
 ==================
 * Add support for --previousResults to point at a local file instead of a link #25 from @Mikek2252
