@@ -6,6 +6,7 @@ const { copy } = require('fs-extra');
 const importCwd = require('import-cwd');
 const fetch = require('node-fetch');
 const { Command } = require('commander');
+const { inspect } = require('util');
 const program = new Command();
 
 async function list(lttfPlugins, previousResultsPath) {
@@ -125,12 +126,12 @@ program
     if (!outputPath && !stdout) {
       console.error('You must provide an output path to `list` with -o or pass --stdout');
     }
-  
+
     let lttfPlugins = await getLttfPlugins();
     const listResult = await list(lttfPlugins, previousResults);
 
     if (stdout) {
-      console.log(listResult);
+      console.log(inspect(listResult, { depth: 5 }));
     }
 
     if (outputPath) {
