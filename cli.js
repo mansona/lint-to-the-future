@@ -36,8 +36,6 @@ async function list(lttfPlugins, previousResultsPath) {
     }
   }
 
-  console.log(previousResults);
-
   let today = new Date();
   let isoDate = today.toISOString().split('T')[0];
 
@@ -61,7 +59,6 @@ async function output(lttfPlugins, outputPath, rootUrl, previousResultsPath) {
     let envContentString = index.match(regex)[1];
     let envContent =  JSON.parse(decodeURIComponent(envContentString));
     envContent.rootURL = `/${rootUrl}/`;
-    console.log(envContent);
     writeFileSync(
       join(outputPath, 'index.html'),
       index
