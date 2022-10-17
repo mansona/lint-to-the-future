@@ -109,7 +109,7 @@ program
   .command('output')
   .description('Generates a dashboard webpage to help track which files have file-based ignore directives in them')
   .requiredOption('-o, --output <path>', 'Output path for dashboard webpage')
-  .option('--rootUrl', 'Required if the dashboard is not hosted on your servers rootUrl')
+  .option('--rootUrl <path|url>', 'Required if the dashboard is not hosted on your servers rootUrl')
   .option('--previous-results <path|url>', 'This should be a path or URL to the previous data.json file that was generated when this command was last run')
   .action(async ({output: outputPath, rootUrl, previousResults}) => {
     let lttfPlugins = await getLttfPlugins();
