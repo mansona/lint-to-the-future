@@ -1,12 +1,16 @@
 import { execaNode } from 'execa';
 import temp from 'temp';
 import { load } from 'cheerio';
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { expect } from 'chai';
 
 describe("program commands", function() {
   describe("output", function() {
+    this.beforeAll(function() {
+      expect(existsSync("dist"), "you need to run 'npm run prepublishOnly' at least once before running this test").to.be.ok;
+    });
+
     let tempDir;
 
     beforeEach(async function() {
