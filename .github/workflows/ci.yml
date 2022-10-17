@@ -12,15 +12,32 @@ env:
 
 jobs:
   test:
-    name: Tests
+    name: Frontend Tests
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 10.x
+          cache: npm
       - uses: mansona/npm-lockfile-version@v1
       - run: npm i -g npm@7
       - run: npm ci
-      - run: npm test
+      - run: npm run test:ember
+
+  node-tests:
+    name: BackendTests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.x
+          cache: npm
+      - uses: mansona/npm-lockfile-version@v1
+      - run: npm i -g npm@8
+      - run: npm ci
+      - run: npm run prepublishOnly # make sure the dashboard is built before testing
+      - run: npm run test:node

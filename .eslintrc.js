@@ -53,6 +53,16 @@ module.exports = {
         // https://github.com/mysticatea/eslint-plugin-node/issues/77
         'node/no-unpublished-require': 'off'
       })
+    },
+    // mocha tests
+    {
+      files: [
+        'node-tests/**/*.mjs'
+      ],
+      env: {
+        node: true,
+        mocha: true,
+      }
     }
   ]
 };
