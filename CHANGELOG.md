@@ -1,3 +1,7 @@
+v1.3.1 / 2022-10-17
+==================
+* Fix rootUrl option #29 from @wandroll
+
 v1.3.0 / 2022-10-14
 ==================
 * Move from minimist to commander #28 from @Mikek2252
