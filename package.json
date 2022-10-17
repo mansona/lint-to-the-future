@@ -25,6 +25,7 @@
     "start": "ember serve",
     "test": "npm-run-all lint:* test:*",
     "test:ember": "ember test",
+    "test:node": "mocha node-tests/*",
     "prepublishOnly": "rm -rf dist && npm run build"
   },
   "devDependencies": {
@@ -35,6 +36,7 @@
     "auto-changelog": "github:mansona/auto-changelog#epic",
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
+    "cheerio": "^1.0.0-rc.12",
     "ember-auto-import": "^1.5.3",
     "ember-body-class": "^2.0.0",
     "ember-cli": "~3.18.0",
@@ -59,14 +61,17 @@
     "eslint": "^6.8.0",
     "eslint-plugin-ember": "^8.4.0",
     "eslint-plugin-node": "^11.1.0",
+    "execa": "^6.1.0",
     "express": "^4.17.1",
     "frappe-charts": "^1.5.2",
     "glob": "^4.5.3",
     "loader.js": "^4.7.0",
+    "mocha": "^10.1.0",
     "morgan": "^1.10.0",
     "npm-run-all": "^4.1.5",
     "qunit-dom": "^1.2.0",
-    "release-it": "^14.6.1"
+    "release-it": "^14.6.1",
+    "temp": "^0.9.4"
   },
   "engines": {
     "node": "10.* || >= 12"
@@ -75,6 +80,7 @@
     "edition": "octane"
   },
   "dependencies": {
+    "chai": "^4.3.6",
     "commander": "^9.4.1",
     "fs-extra": "^7.0.1",
     "import-cwd": "^3.0.0",
