@@ -29,7 +29,7 @@ export default function normaliseData(data, highestDate) {
   let lastValue;
   normalisedKeys.forEach(key => {
     if(data[key]) {
-      lastValue = data[key].length
+      lastValue = Array.isArray(data[key]) ? data[key].length : data[key]
     }
     output[key] = lastValue;
   })
