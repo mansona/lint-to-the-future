@@ -22,8 +22,14 @@ async function list(lttfPlugins, previousResultsPath) {
     if (previousResultsPath.match(/((http(s?)):\/\/)/)) {
       const response = await fetch(previousResultsPath);
 
-      if(response.ok) {
-        previousResults = await response.json();
+      if (response.ok) {
+        try {
+          previousResults = await response.json();
+        } catch (e) {
+          console.warn(
+            `Error (${e.message}) when parsing previous results. Previous results ignored`
+          );
+        }
       } else {
         console.warn(`Error ${response.status} when downloading previous results. Previous results ignored`);
       }
