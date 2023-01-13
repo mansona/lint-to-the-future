@@ -1,3 +1,8 @@
+v2.0.0 / 2023-01-13
+==================
+* Squash old file lists to save size #32 from @wagenet
+* add a basic tests for rootUrl on output command #30 from @mansona
+
 v1.3.1 / 2022-10-17
 ==================
 * Fix rootUrl option #29 from @wandroll
