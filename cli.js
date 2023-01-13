@@ -37,6 +37,17 @@ async function list(lttfPlugins, previousResultsPath) {
     }
   }
 
+  // Squash old entries
+  for (let date in previousResults) {
+    for (let plugin in previousResults[date]) {
+      for (let rule in previousResults[date][plugin]) {
+        if (Array.isArray(previousResults[date][plugin][rule])) {
+          previousResults[date][plugin][rule] = previousResults[date][plugin][rule].length;
+        }
+      }
+    }
+  }
+
   let today = new Date();
   let isoDate = today.toISOString().split('T')[0];
 
