@@ -117,3 +117,8 @@ a {
 footer {
   margin-top: 20px;
 }
+
+/* This is a hack to remove the y-markers that are designed to remove fractional numbers from the axis */
+.frappe-chart .y-markers {
+  display: none;
+}
