@@ -112,14 +112,6 @@ async function getLttfPlugins() {
   return lttfPlugins;
 }
 
-async function deleteIgnore(plugin, lintRuleName) {
-  if (plugin.import.delete) {
-    await plugin.import.delete(lintRuleName);
-  } else {
-    console.error(`The 'remove' command is not supported by the plugin ${plugin.name}. Please update or contact the plugin developers`)
-  }
-}
-
 function getFirstObjectFromObjectKeys(object) {
   let key = Object.keys(object)[0];
   return object[key];
@@ -177,9 +169,8 @@ program
 program
   .command('remove')
   .description('Remove file-based ignores in every file for a specified rule')
-  .argument('<string>', 'Name of lint rule to remove file-based ignores')
-  .option('-p, --plugin-name <string>', 'name of plugin rule belongs to')
-  .option('--all-plugins', 'remove instances of rule in all plugins')
+  .argument('<rule-name>', 'Name of lint rule to remove file-based ignores')
+  .option('-f, --filter <string>', 'only apply to the filtered files')
   .action(async(lintRuleName, options) => {
     let lttfPlugins = await getLttfPlugins();
     let listResult = getFirstObjectFromObjectKeys(await list(lttfPlugins));
@@ -198,35 +189,16 @@ program
       return;
     }
 
-    let { pluginName, allPlugins: removeFromAllPlugins } = options;
-
-    let specifiedPlugin = pluginsWithRuleName.find(({name}) => name === pluginName);
-
-    if (pluginName && !specifiedPlugin) {
-      console.error(`No file-based ignores could be found for the plugin '${pluginName}' and lint rule '${lintRuleName}'`)
-      return;
-    }
-
-    let ruleHasMultiplePlugins = pluginsWithRuleName.length > 1;
-
-    if (ruleHasMultiplePlugins && !pluginName && !removeFromAllPlugins) {
-      let pluginNames = pluginsWithRuleName.map(({name}) => name).join(' ');
-      console.error(`The rule '${lintRuleName}' is present in the following plugins: ${pluginNames}.
-      Please use '--all-plugins' if you wish to remove ignore instances from all plugins.
-      Please use '-p <string>' or '--plugin-name <string>' to specifiy which plugin the rule comes from.`)
-      return;
-    }
-
-    if (removeFromAllPlugins) {
-      for (let plugin of pluginsWithRuleName) {
-         await deleteIgnore(plugin, lintRuleName);
+    async function removeIgnore(plugin, lintRuleName) {
+      if (plugin.import.remove) {
+        await plugin.import.remove({name: lintRuleName, filter: options.filter});
+      } else {
+        console.error(`The 'remove' command is not supported by the plugin ${plugin.name}. Please update or contact the plugin developers`)
       }
-      return;
     }
-
-    let pluginOfLintRuleToRemove = pluginName ? specifiedPlugin : pluginsWithRuleName[0];
-
-    await deleteIgnore(pluginOfLintRuleToRemove, lintRuleName);
+    for (let plugin of pluginsWithRuleName) {
+        await removeIgnore(plugin, lintRuleName);
+    }
   });
 
 program.parse();
