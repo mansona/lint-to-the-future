@@ -1,0 +1,21 @@
+{
+  "solution": {
+    "lint-to-the-future": {
+      "impact": "minor",
+      "oldVersion": "2.0.0",
+      "newVersion": "2.1.0",
+      "constraints": [
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./package.json"
+    }
+  },
+  "description": "## Release (2024-09-30)\n\nlint-to-the-future 2.1.0 (minor)\n\n#### :rocket: Enhancement\n* `lint-to-the-future`\n  * [#36](https://github.com/mansona/lint-to-the-future/pull/36) Add remove command to lint-to-the-future ([@Mikek2252](https://github.com/Mikek2252))\n  * [#44](https://github.com/mansona/lint-to-the-future/pull/44) add lttf alias ([@mansona](https://github.com/mansona))\n  * [#37](https://github.com/mansona/lint-to-the-future/pull/37) Prevent fractions from showing up in the y axis ([@mansona](https://github.com/mansona))\n\n#### :house: Internal\n* `lint-to-the-future`\n  * [#43](https://github.com/mansona/lint-to-the-future/pull/43) Add prettier setup ([@mansona](https://github.com/mansona))\n  * [#41](https://github.com/mansona/lint-to-the-future/pull/41) move output command test to its own file ([@mansona](https://github.com/mansona))\n  * [#40](https://github.com/mansona/lint-to-the-future/pull/40) setup release-plan ([@mansona](https://github.com/mansona))\n  * [#39](https://github.com/mansona/lint-to-the-future/pull/39) switch to pnpm ([@mansona](https://github.com/mansona))\n\n#### Committers: 2\n- Chris Manson ([@mansona](https://github.com/mansona))\n- Michael Kerr ([@Mikek2252](https://github.com/Mikek2252))\n"
+}

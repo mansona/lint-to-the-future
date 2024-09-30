@@ -1,6 +1,6 @@
 {
   "name": "lint-to-the-future",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A modern way to progressively update your code to the best practices",
   "repository": "https://github.com/mansona/lint-to-the-future",
   "license": "MIT",
