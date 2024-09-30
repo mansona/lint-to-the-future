@@ -6,7 +6,8 @@
   "license": "MIT",
   "author": "Chris Manson <chris@manson.ie>",
   "bin": {
-    "lint-to-the-future": "cli.js"
+    "lint-to-the-future": "cli.js",
+    "lttf": "cli.js"
   },
   "directories": {
     "doc": "doc",
