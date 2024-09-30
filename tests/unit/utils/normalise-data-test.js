@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import normaliseData from 'lint-to-the-future/utils/normalise-data';
 import timeSeries from 'lint-to-the-future/utils/time-series';
 import {
