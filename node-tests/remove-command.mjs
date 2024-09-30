@@ -38,6 +38,19 @@ describe('remove command', function () {
       },
     });
 
+    project.addDependency('lint-to-the-future-old-plugin', {
+      files: {
+        'index.js': `function list() {
+          return {
+            'old-lint': ['other-file-name']
+          };
+        }
+        module.exports = {
+          list,
+        }`,
+      },
+    });
+
     await project.write();
   });
 
@@ -49,6 +62,26 @@ describe('remove command', function () {
         `error: missing required argument 'rule-name'`
       );
     }
+  });
+
+  it('should complain if you pass a rule that is unknown to any plugin', async function () {
+    const result = await execa({
+      cwd: project.baseDir,
+    })`${cliPath} remove unknown-rule`;
+
+    expect(result.stderr).to.equal(
+      `No file-based ignores could be found for the lint rule 'unknown-rule'`
+    );
+  });
+
+  it('should complain if you pass a rule that doesnt support remove', async function () {
+    const result = await execa({
+      cwd: project.baseDir,
+    })`${cliPath} remove old-lint`;
+
+    expect(result.stderr).to.equal(
+      `The 'remove' command is not supported by the plugin lint-to-the-future-old-plugin. Please update or contact the plugin developers`
+    );
   });
 
   it('should pass the name to the plugins', async function () {
