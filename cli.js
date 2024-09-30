@@ -112,6 +112,11 @@ async function getLttfPlugins() {
   return lttfPlugins;
 }
 
+function getFirstObjectFromObjectKeys(object) {
+  let key = Object.keys(object)[0];
+  return object[key];
+}
+
 program
   .name('lint-to-the-future')
   .description('A modern way to progressively update your code to the best practices using lint rules')
@@ -158,6 +163,41 @@ program
     let lttfPlugins = await getLttfPlugins();
     for (let plugin of lttfPlugins) {
       await plugin.import.ignoreAll();
+    }
+  });
+
+program
+  .command('remove')
+  .description('Remove file-based ignores in every file for a specified rule')
+  .argument('<rule-name>', 'Name of lint rule to remove file-based ignores')
+  .option('-f, --filter <string>', 'only apply to the filtered files')
+  .action(async(lintRuleName, options) => {
+    let lttfPlugins = await getLttfPlugins();
+    let listResult = getFirstObjectFromObjectKeys(await list(lttfPlugins));
+
+
+    let pluginsWithRuleName = [];
+    for (const pluginKey in listResult) {
+      if (listResult[pluginKey][lintRuleName]) {
+        let plugin = lttfPlugins.find(plugin => plugin.name === pluginKey);
+        pluginsWithRuleName.push(plugin);
+      }
+    }
+
+    if (!pluginsWithRuleName.length) {
+      console.error(`No file-based ignores could be found for the lint rule '${lintRuleName}'`);
+      return;
+    }
+
+    async function removeIgnore(plugin, lintRuleName) {
+      if (plugin.import.remove) {
+        await plugin.import.remove({name: lintRuleName, filter: options.filter});
+      } else {
+        console.error(`The 'remove' command is not supported by the plugin ${plugin.name}. Please update or contact the plugin developers`)
+      }
+    }
+    for (let plugin of pluginsWithRuleName) {
+        await removeIgnore(plugin, lintRuleName);
     }
   });
 
