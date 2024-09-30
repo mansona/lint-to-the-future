@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
@@ -46,11 +47,18 @@ function getData(processedData, ruleName) {
             values: Object.values(processedData)
         }
     ],
+    // This is a hack to remove the y-markers that are designed to remove fractional numbers from the axis.
+    // Now every chart will have a minimum height of 5. Not great but 🤷‍♂️
     yMarkers: [
         {
             label: '',
             value: 0,
             type: 'solid'
+        },
+        {
+          label: '',
+          value: 5,
+          type: 'solid'
         }
     ]
   };

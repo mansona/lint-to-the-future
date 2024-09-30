@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable prettier/prettier */
 
 const { join } = require('path');
 const { writeFileSync, readFileSync } = require('fs');

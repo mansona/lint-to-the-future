@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 export default function normaliseData(data, highestDate) {
   let keys = Object.keys(data);
 

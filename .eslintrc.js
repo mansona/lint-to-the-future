@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use strict';
 
 module.exports = {
@@ -15,7 +16,8 @@ module.exports = {
   ],
   extends: [
     'eslint:recommended',
-    'plugin:ember/recommended'
+    'plugin:ember/recommended',
+    'plugin:prettier/recommended',
   ],
   env: {
     browser: true
@@ -27,6 +29,7 @@ module.exports = {
     // node files
     {
       files: [
+        '.prettierrc.js',
         '.eslintrc.js',
         '.release-it.js',
         '.template-lintrc.js',

@@ -1,3 +1,5 @@
+# Changelog
+
 v2.0.0 / 2023-01-13
 ==================
 * Squash old file lists to save size #32 from @wagenet

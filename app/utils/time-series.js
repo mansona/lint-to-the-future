@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 export default function timeSeries(data) {
   let results = {};
 

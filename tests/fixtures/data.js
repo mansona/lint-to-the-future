@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 export const zero = {
   "2021-03-18": {
     "lint-to-the-future-ember-template": {
