@@ -1,5 +1,26 @@
 # Changelog
 
+## Release (2024-09-30)
+
+lint-to-the-future 2.1.0 (minor)
+
+#### :rocket: Enhancement
+* `lint-to-the-future`
+  * [#36](https://github.com/mansona/lint-to-the-future/pull/36) Add remove command to lint-to-the-future ([@Mikek2252](https://github.com/Mikek2252))
+  * [#44](https://github.com/mansona/lint-to-the-future/pull/44) add lttf alias ([@mansona](https://github.com/mansona))
+  * [#37](https://github.com/mansona/lint-to-the-future/pull/37) Prevent fractions from showing up in the y axis ([@mansona](https://github.com/mansona))
+
+#### :house: Internal
+* `lint-to-the-future`
+  * [#43](https://github.com/mansona/lint-to-the-future/pull/43) Add prettier setup ([@mansona](https://github.com/mansona))
+  * [#41](https://github.com/mansona/lint-to-the-future/pull/41) move output command test to its own file ([@mansona](https://github.com/mansona))
+  * [#40](https://github.com/mansona/lint-to-the-future/pull/40) setup release-plan ([@mansona](https://github.com/mansona))
+  * [#39](https://github.com/mansona/lint-to-the-future/pull/39) switch to pnpm ([@mansona](https://github.com/mansona))
+
+#### Committers: 2
+- Chris Manson ([@mansona](https://github.com/mansona))
+- Michael Kerr ([@Mikek2252](https://github.com/Mikek2252))
+
 v2.0.0 / 2023-01-13
 ==================
 * Squash old file lists to save size #32 from @wagenet
