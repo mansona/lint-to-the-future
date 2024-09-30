@@ -89,7 +89,8 @@
   },
   "pnpm": {
     "overrides": {
-      "undici": "^5.0.0"
+      "undici": "^5.0.0",
+      "whatwg-url": "^14.0.0"
     },
     "patchedDependencies": {
       "fixturify-project@7.1.2": "patches/fixturify-project@7.1.2.patch"
