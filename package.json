@@ -68,7 +68,7 @@
     "eslint-plugin-ember": "^8.4.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.0.0",
-    "execa": "^9.4.0",
+    "execa": "^7.0.0",
     "express": "^4.17.1",
     "fixturify-project": "^7.1.2",
     "frappe-charts": "^1.5.2",

@@ -56,7 +56,7 @@ describe('remove command', function () {
 
   it('should complain if you dont provide a rule', async function () {
     try {
-      await execa({ cwd: project.baseDir })`${cliPath} remove`;
+      await execa(cliPath, ['remove'], { cwd: project.baseDir });
     } catch (error) {
       expect(error.stderr).to.equal(
         `error: missing required argument 'rule-name'`
@@ -65,9 +65,9 @@ describe('remove command', function () {
   });
 
   it('should complain if you pass a rule that is unknown to any plugin', async function () {
-    const result = await execa({
+    const result = await execa(cliPath, ['remove', 'unknown-rule'], {
       cwd: project.baseDir,
-    })`${cliPath} remove unknown-rule`;
+    });
 
     expect(result.stderr).to.equal(
       `No file-based ignores could be found for the lint rule 'unknown-rule'`
@@ -75,9 +75,9 @@ describe('remove command', function () {
   });
 
   it('should complain if you pass a rule that doesnt support remove', async function () {
-    const result = await execa({
+    const result = await execa(cliPath, ['remove', 'old-lint'], {
       cwd: project.baseDir,
-    })`${cliPath} remove old-lint`;
+    });
 
     expect(result.stderr).to.equal(
       `The 'remove' command is not supported by the plugin lint-to-the-future-old-plugin. Please update or contact the plugin developers`
@@ -85,9 +85,9 @@ describe('remove command', function () {
   });
 
   it('should pass the name to the plugins', async function () {
-    const result = await execa({
+    const result = await execa(cliPath, ['remove', 'face-lint'], {
       cwd: project.baseDir,
-    })`${cliPath} remove face-lint`;
+    });
 
     expect(JSON.parse(result.stdout)[0]).to.deep.equal({
       name: 'face-lint',
@@ -95,9 +95,13 @@ describe('remove command', function () {
   });
 
   it('should pass the filter to plugins if passed', async function () {
-    const result = await execa({
-      cwd: project.baseDir,
-    })`${cliPath} remove face-lint --filter folder/**/*.js`;
+    const result = await execa(
+      cliPath,
+      ['remove', 'face-lint', '--filter', 'folder/**/*.js'],
+      {
+        cwd: project.baseDir,
+      }
+    );
 
     expect(JSON.parse(result.stdout)[0]).to.deep.equal({
       filter: 'folder/**/*.js',
