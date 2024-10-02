@@ -21,7 +21,7 @@ specifiers:
   cheerio: ^1.0.0-rc.12
   commander: ^9.4.1
   ember-auto-import: ^2.4.1
-  ember-body-class: ^2.0.0
+  ember-body-class: ^3.0.0
   ember-cli: ~4.4.1
   ember-cli-app-version: ^5.0.0
   ember-cli-babel: ^7.26.11
@@ -39,7 +39,7 @@ specifiers:
   ember-resolver: ^8.0.3
   ember-source: ~4.4.0
   ember-template-lint: ^4.8.0
-  ember-test-selectors: ^6.0.0
+  ember-test-selectors: ^7.0.0
   ember-welcome-page: ^6.2.0
   eslint: ^7.32.0
   eslint-config-prettier: ^8.5.0
@@ -84,7 +84,7 @@ devDependencies:
   broccoli-asset-rev: 3.0.0
   cheerio: 1.0.0
   ember-auto-import: 2.8.1_webpack@5.95.0
-  ember-body-class: 2.1.1
+  ember-body-class: 3.0.0
   ember-cli: 4.4.1
   ember-cli-app-version: 5.0.0
   ember-cli-babel: 7.26.11
@@ -102,7 +102,7 @@ devDependencies:
   ember-resolver: 8.1.0
   ember-source: 4.4.5_webpack@5.95.0
   ember-template-lint: 4.18.2
-  ember-test-selectors: 6.0.0
+  ember-test-selectors: 7.0.0
   ember-welcome-page: 6.2.0
   eslint: 7.32.0
   eslint-config-prettier: 8.10.0_eslint@7.32.0
@@ -6403,9 +6403,9 @@ packages:
       - webpack
     dev: true
 
-  /ember-body-class/2.1.1:
-    resolution: {integrity: sha512-s6Yl0r4DRpQ7VlRolgTzgTTnssaM9sNyp1kSnEzaTVJEFUAqe+IM9HzYiDbi+FXkF54FfKQfnIC4OCKaccn9Vw==}
-    engines: {node: 10.* || >= 12}
+  /ember-body-class/3.0.0:
+    resolution: {integrity: sha512-kgXT1Yti4PCZ1ASYpyQxaciR35P44stL0/E6nafKPi+c3BwzQbOj5xK+kr9ca/rccUA/TbQOCEGwxLnZnHE7BA==}
+    engines: {node: 12.* || 14.* || >= 16}
     dependencies:
       ember-cli-babel: 7.26.11
       ember-get-config: 0.5.0
@@ -7215,9 +7215,9 @@ packages:
       - supports-color
     dev: true
 
-  /ember-test-selectors/6.0.0:
-    resolution: {integrity: sha512-PgYcI9PeNvtKaF0QncxfbS68olMYM1idwuI8v/WxsjOGqUx5bmsu6V17vy/d9hX4mwmjgsBhEghrVasGSuaIgw==}
-    engines: {node: 12.* || 14.* || >= 16.*}
+  /ember-test-selectors/7.0.0:
+    resolution: {integrity: sha512-gGJzzBw6CsBB9gfk9/4qw0+iOSvhlqvUe4jIZKDf4waMkgVLtnPdFUWMocfFvUnJS7IitwKB/iTgIctD4RgH7w==}
+    engines: {node: 18.* || 20.* || >= 22.*}
     dependencies:
       calculate-cache-key-for-tree: 2.0.0
       ember-cli-babel: 7.26.11
