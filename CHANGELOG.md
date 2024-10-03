@@ -1,5 +1,21 @@
 # Changelog
 
+## Release (2024-10-03)
+
+lint-to-the-future 2.2.0 (minor)
+
+#### :rocket: Enhancement
+* `lint-to-the-future`
+  * [#47](https://github.com/mansona/lint-to-the-future/pull/47) Hide completed rules ([@Mikek2252](https://github.com/Mikek2252))
+  * [#45](https://github.com/mansona/lint-to-the-future/pull/45) Upgrade LTTF Dashboard app to ember 5 ([@Mikek2252](https://github.com/Mikek2252))
+
+#### :bug: Bug Fix
+* `lint-to-the-future`
+  * [#48](https://github.com/mansona/lint-to-the-future/pull/48) Accept rule names with colon. ([@Mikek2252](https://github.com/Mikek2252))
+
+#### Committers: 1
+- Michael Kerr ([@Mikek2252](https://github.com/Mikek2252))
+
 ## Release (2024-09-30)
 
 lint-to-the-future 2.1.0 (minor)
