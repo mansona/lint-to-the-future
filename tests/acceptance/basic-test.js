@@ -25,9 +25,9 @@ module('Acceptance | basic', function(hooks) {
   test('completed rules are filtered into collapsed window', async function (assert) {
     await visit('/');
 
-
     assert.equal(currentURL(), '/');
-    assert.dom('[data-test-chart]').exists({count: 9})
+    // top level charts
+    assert.dom('.ember-application > div > [data-test-chart]').exists({count: 9})
 
     assert.dom('[data-test-completed-rules] [data-test-chart]').exists({count: 1});
   })
