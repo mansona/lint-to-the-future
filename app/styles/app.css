@@ -1,3 +1,5 @@
+/* stylelint-disable prettier/prettier, rule-empty-line-before, color-function-notation, declaration-block-no-shorthand-property-overrides, alpha-value-notation */
+/* stylelint-disable declaration-block-no-redundant-longhand-properties */
 body {
   background-color: #EDF7D2;
   font-family: 'Source Sans Pro', sans-serif;
@@ -34,7 +36,6 @@ a {
   bottom: 50px;
   right: 50px;
   left: 50px;
-
   border-radius: 25px;
   padding: 0 25px 25px;
   background-color: white;
@@ -121,4 +122,20 @@ footer {
 /* This is a hack to remove the y-markers that are designed to remove fractional numbers from the axis */
 .frappe-chart .y-markers {
   display: none;
+}
+
+details {
+  margin: 20px 0;
+  border: #0F3460 3px solid;
+}
+
+summary {
+  background-color: #16213E;
+  color: white;
+  cursor: pointer;
+  padding: 20px;
+}
+
+details[open] summary {
+  margin-bottom: 20px;
 }
