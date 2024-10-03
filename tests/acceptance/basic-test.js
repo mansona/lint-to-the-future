@@ -10,7 +10,7 @@ module('Acceptance | basic', function(hooks) {
     await visit('/');
 
     assert.equal(currentURL(), '/');
-    assert.dom('[data-test-chart]').exists({count: 9})
+    assert.dom('[data-test-chart]').exists({count: 10})
     // await this.pauseTest();
 
     assert.dom('[data-test-chart="lint-to-the-future-ember-template:require-valid-alt-text"] [data-test-time-button="monthly"]').isChecked();
