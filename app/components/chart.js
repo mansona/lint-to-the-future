@@ -73,7 +73,7 @@ export default class ChartComponent extends Component {
   }
 
   get ruleName() {
-    return this.args.rule.split(':')[1];
+    return this.args.rule.split(':').slice(1).join(':');
   }
 
   get guid() {
