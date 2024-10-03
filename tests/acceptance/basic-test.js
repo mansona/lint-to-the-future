@@ -21,4 +21,14 @@ module('Acceptance | basic', function(hooks) {
     assert.equal(currentURL(), '/files/lint-to-the-future-eslint:prettier%2Fprettier');
     assert.dom('[data-test-file]').exists({count: 32})
   });
+
+  test('completed rules are filtered into collapsed window', async function (assert) {
+    await visit('/');
+
+
+    assert.equal(currentURL(), '/');
+    assert.dom('[data-test-chart]').exists({count: 9})
+
+    assert.dom('[data-test-completed-rules] [data-test-chart]').exists({count: 1});
+  })
 });
