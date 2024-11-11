@@ -34,7 +34,6 @@
     "prepublishOnly": "rm -rf dist && npm run build"
   },
   "dependencies": {
-    "chai": "^4.3.6",
     "commander": "^9.4.1",
     "fs-extra": "^7.0.1",
     "import-cwd": "^3.0.0",
@@ -51,6 +50,7 @@
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "broccoli-asset-rev": "^3.0.0",
+    "chai": "^4.3.6",
     "cheerio": "^1.0.0-rc.12",
     "concurrently": "^8.2.2",
     "ember-auto-import": "^2.7.4",
