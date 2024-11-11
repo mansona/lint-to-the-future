@@ -1,5 +1,24 @@
 # Changelog
 
+## Release (2024-11-11)
+
+lint-to-the-future 2.3.0 (minor)
+
+#### :rocket: Enhancement
+* `lint-to-the-future`
+  * [#50](https://github.com/mansona/lint-to-the-future/pull/50) add ability to ignore only one plugin ([@mansona](https://github.com/mansona))
+
+#### :bug: Bug Fix
+* `lint-to-the-future`
+  * [#52](https://github.com/mansona/lint-to-the-future/pull/52) move chai to devDependencies ([@mansona](https://github.com/mansona))
+
+#### :house: Internal
+* `lint-to-the-future`
+  * [#49](https://github.com/mansona/lint-to-the-future/pull/49) add lint to CI ([@mansona](https://github.com/mansona))
+
+#### Committers: 1
+- Chris Manson ([@mansona](https://github.com/mansona))
+
 ## Release (2024-10-03)
 
 lint-to-the-future 2.2.0 (minor)

@@ -2,8 +2,8 @@
   "solution": {
     "lint-to-the-future": {
       "impact": "minor",
-      "oldVersion": "2.1.0",
-      "newVersion": "2.2.0",
+      "oldVersion": "2.2.0",
+      "newVersion": "2.3.0",
       "constraints": [
         {
           "impact": "minor",
@@ -12,10 +12,14 @@
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./package.json"
     }
   },
-  "description": "## Release (2024-10-03)\n\nlint-to-the-future 2.2.0 (minor)\n\n#### :rocket: Enhancement\n* `lint-to-the-future`\n  * [#47](https://github.com/mansona/lint-to-the-future/pull/47) Hide completed rules ([@Mikek2252](https://github.com/Mikek2252))\n  * [#45](https://github.com/mansona/lint-to-the-future/pull/45) Upgrade LTTF Dashboard app to ember 5 ([@Mikek2252](https://github.com/Mikek2252))\n\n#### :bug: Bug Fix\n* `lint-to-the-future`\n  * [#48](https://github.com/mansona/lint-to-the-future/pull/48) Accept rule names with colon. ([@Mikek2252](https://github.com/Mikek2252))\n\n#### Committers: 1\n- Michael Kerr ([@Mikek2252](https://github.com/Mikek2252))\n"
+  "description": "## Release (2024-11-11)\n\nlint-to-the-future 2.3.0 (minor)\n\n#### :rocket: Enhancement\n* `lint-to-the-future`\n  * [#50](https://github.com/mansona/lint-to-the-future/pull/50) add ability to ignore only one plugin ([@mansona](https://github.com/mansona))\n\n#### :bug: Bug Fix\n* `lint-to-the-future`\n  * [#52](https://github.com/mansona/lint-to-the-future/pull/52) move chai to devDependencies ([@mansona](https://github.com/mansona))\n\n#### :house: Internal\n* `lint-to-the-future`\n  * [#49](https://github.com/mansona/lint-to-the-future/pull/49) add lint to CI ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
 }
