@@ -97,7 +97,6 @@ async function getLttfPlugins() {
     let mod;
 
     try {
-      // eslint-disable-next-line node/no-unsupported-features/es-syntax
       mod = await import(join(process.cwd(), 'node_modules', name, 'main.mjs'));
     } catch (err) {
       // fallback to trying importCwd

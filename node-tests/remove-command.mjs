@@ -59,7 +59,7 @@ describe('remove command', function () {
       await execa(cliPath, ['remove'], { cwd: project.baseDir });
     } catch (error) {
       expect(error.stderr).to.equal(
-        `error: missing required argument 'rule-name'`
+        `error: missing required argument 'rule-name'`,
       );
     }
   });
@@ -70,7 +70,7 @@ describe('remove command', function () {
     });
 
     expect(result.stderr).to.equal(
-      `No file-based ignores could be found for the lint rule 'unknown-rule'`
+      `No file-based ignores could be found for the lint rule 'unknown-rule'`,
     );
   });
 
@@ -80,7 +80,7 @@ describe('remove command', function () {
     });
 
     expect(result.stderr).to.equal(
-      `The 'remove' command is not supported by the plugin lint-to-the-future-old-plugin. Please update or contact the plugin developers`
+      `The 'remove' command is not supported by the plugin lint-to-the-future-old-plugin. Please update or contact the plugin developers`,
     );
   });
 
@@ -100,7 +100,7 @@ describe('remove command', function () {
       ['remove', 'face-lint', '--filter', 'folder/**/*.js'],
       {
         cwd: project.baseDir,
-      }
+      },
     );
 
     expect(JSON.parse(result.stdout)[0]).to.deep.equal({
