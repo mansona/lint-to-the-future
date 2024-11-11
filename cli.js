@@ -158,10 +158,23 @@ program
 program
   .command('ignore')
   .description('Add file-based ignores to any file that is currently erroring')
-  .action(async () => {
+  .option('-p, --plugin <string>', 'only run ignore on one plugin')
+  .action(async (options) => {
     let lttfPlugins = await getLttfPlugins();
-    for (let plugin of lttfPlugins) {
+
+    if(options.plugin) {
+      let plugin = lttfPlugins.find(p => p.name === options.plugin)
+
+      if(!plugin) {
+        program.error(`Could not find plugin with specified name ${options.plugin}. Available plugins are: ${lttfPlugins.map(p => p.name).join(', ')}`)
+        return;
+      }
+
       await plugin.import.ignoreAll();
+    } else {
+      for (let plugin of lttfPlugins) {
+        await plugin.import.ignoreAll();
+      }
     }
   });
 
