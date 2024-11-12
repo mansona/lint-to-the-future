@@ -24,11 +24,12 @@ describe('remove command', function () {
       files: {
         'index.js': `function ignoreAll() {
           // we need to communicate via stdout since we're calling this via a different process
-          console.log('ignoredAll from fake-plugin');
+          console.log('ignoredAll from fake-plugin. Args:', JSON.stringify(arguments));
         }
 
         module.exports = {
           ignoreAll,
+          capabilities: ['filter-ignore']
         }`,
       },
     });
@@ -54,7 +55,7 @@ describe('remove command', function () {
     result = await execa(cliPath, ['ignore'], { cwd: project.baseDir });
 
     expect(result.stdout).to.equal(
-      `ignoredAll from fake-plugin
+      `ignoredAll from fake-plugin. Args: {"0":{}}
 ignoredAll from old-plugin`,
     );
 
@@ -70,7 +71,9 @@ ignoredAll from old-plugin`,
       { cwd: project.baseDir },
     );
 
-    expect(result.stdout).to.equal(`ignoredAll from fake-plugin`);
+    expect(result.stdout).to.equal(
+      `ignoredAll from fake-plugin. Args: {"0":{}}`,
+    );
 
     expect(result.exitCode).to.equal(0);
   });
@@ -91,5 +94,41 @@ Could not find plugin with specified name fancy-plugin. Available plugins are: l
 
     // make sure the test actually went into the catch block above
     expect(result).to.be.undefined;
+  });
+
+  it('should complain if you pass filter to a plugin that doesnt support it', async function () {
+    let result;
+
+    try {
+      result = await execa(cliPath, ['ignore', '-f', 'app/**/*.gjs'], {
+        cwd: project.baseDir,
+      });
+    } catch (error) {
+      expect(error.message).to.equal(
+        `Command failed with exit code 1: ${cliPath} ignore -f app/**/*.gjs
+Plugin lint-to-the-future-old-plugin does not support passing '--filter' to the ignore command. Please update or contact the plugin developers
+ignoredAll from fake-plugin. Args: {"0":{"filter":"app/**/*.gjs"}}`,
+      );
+    }
+
+    // make sure the test actually went into the catch block above
+    expect(result).to.be.undefined;
+  });
+
+  it('should pass filter to the plugin if it supports it', async function () {
+    let result;
+
+    result = await execa(
+      cliPath,
+      ['ignore', '-f', 'app/**/*.gjs', '-p', 'lint-to-the-future-fake-plugin'],
+      {
+        cwd: project.baseDir,
+      },
+    );
+
+    expect(result.exitCode).to.equal(0);
+    expect(result.stdout).to.equal(
+      'ignoredAll from fake-plugin. Args: {"0":{"filter":"app/**/*.gjs"}}',
+    );
   });
 });

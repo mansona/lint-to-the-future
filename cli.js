@@ -159,7 +159,20 @@ program
   .command('ignore')
   .description('Add file-based ignores to any file that is currently erroring')
   .option('-p, --plugin <string>', 'only run ignore on one plugin')
+  .option('-f, --filter <string>', 'only apply to the filtered files')
   .action(async (options) => {
+
+    function executePlugin(plugin) {
+      if (options.filter) {
+        if (!plugin.import.capabilities?.includes('filter-ignore')) {
+          program.error(`Plugin ${plugin.name} does not support passing '--filter' to the ignore command. Please update or contact the plugin developers`);
+          return;
+        }
+      }
+
+      return plugin.import.ignoreAll({filter: options.filter});
+    }
+
     let lttfPlugins = await getLttfPlugins();
 
     if(options.plugin) {
@@ -170,10 +183,10 @@ program
         return;
       }
 
-      await plugin.import.ignoreAll();
+      await executePlugin(plugin);
     } else {
       for (let plugin of lttfPlugins) {
-        await plugin.import.ignoreAll();
+        await executePlugin(plugin);
       }
     }
   });
