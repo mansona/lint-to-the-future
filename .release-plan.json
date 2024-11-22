@@ -1,17 +1,17 @@
 {
   "solution": {
     "lint-to-the-future": {
-      "impact": "minor",
-      "oldVersion": "2.3.0",
-      "newVersion": "2.4.0",
+      "impact": "patch",
+      "oldVersion": "2.4.0",
+      "newVersion": "2.4.1",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./package.json"
     }
   },
-  "description": "## Release (2024-11-12)\n\nlint-to-the-future 2.4.0 (minor)\n\n#### :rocket: Enhancement\n* `lint-to-the-future`\n  * [#53](https://github.com/mansona/lint-to-the-future/pull/53) add ability to pass a --filter to ignore ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
+  "description": "## Release (2024-11-22)\n\nlint-to-the-future 2.4.1 (patch)\n\n#### :bug: Bug Fix\n* `lint-to-the-future`\n  * [#55](https://github.com/mansona/lint-to-the-future/pull/55) make sure that we never pass a filter to a plugin that doesn't support it ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
 }

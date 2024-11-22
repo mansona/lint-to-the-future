@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2024-11-22)
+
+lint-to-the-future 2.4.1 (patch)
+
+#### :bug: Bug Fix
+* `lint-to-the-future`
+  * [#55](https://github.com/mansona/lint-to-the-future/pull/55) make sure that we never pass a filter to a plugin that doesn't support it ([@mansona](https://github.com/mansona))
+
+#### Committers: 1
+- Chris Manson ([@mansona](https://github.com/mansona))
+
 ## Release (2024-11-12)
 
 lint-to-the-future 2.4.0 (minor)
