@@ -163,14 +163,16 @@ program
   .action(async (options) => {
 
     function executePlugin(plugin) {
-      if (options.filter) {
-        if (!plugin.import.capabilities?.includes('filter-ignore')) {
+      // this makes sure that even when
+      if (plugin.import.capabilities?.includes('filter-ignore')) {
+        return plugin.import.ignoreAll({filter: options.filter});
+      } else {
+        if (options.filter) {
           program.error(`Plugin ${plugin.name} does not support passing '--filter' to the ignore command. Please update or contact the plugin developers`);
           return;
         }
+        plugin.import.ignoreAll()
       }
-
-      return plugin.import.ignoreAll({filter: options.filter});
     }
 
     let lttfPlugins = await getLttfPlugins();
