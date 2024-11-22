@@ -36,9 +36,9 @@ describe('remove command', function () {
 
     project.addDependency('lint-to-the-future-old-plugin', {
       files: {
-        'index.js': `function ignoreAll() {
+        'index.js': `function ignoreAll(someUnknownParam = "old-plugin") {
           // we need to communicate via stdout since we're calling this via a different process
-          console.log('ignoredAll from old-plugin');
+          console.log(\`ignoredAll from \${someUnknownParam}\`);
         }
         module.exports = {
           ignoreAll,
