@@ -5,6 +5,11 @@ export default class RuleRoute extends Route {
     let application = this.modelFor('application');
     // this seems like a bug in Ember 🙈 but it works so I'm going with it
     let ruleId = params[''];
+
+    // this is to prevent hosts that add an automatic trailing slash to the url
+    // from adding that to what we think the ruleId is
+    ruleId = ruleId.replace(/\/$/, '');
+
     let ruleValue = application.data[ruleId];
     let keys = Object.keys(ruleValue);
 
