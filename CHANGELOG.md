@@ -1,5 +1,21 @@
 # Changelog
 
+## Release (2024-11-26)
+
+lint-to-the-future 2.5.0 (minor)
+
+#### :rocket: Enhancement
+* `lint-to-the-future`
+  * [#59](https://github.com/mansona/lint-to-the-future/pull/59) add ability to output folders for better SSG hosting  ([@mansona](https://github.com/mansona))
+  * [#58](https://github.com/mansona/lint-to-the-future/pull/58) Rename "files" route to "rule", make it a real route instead of a modal, and make it more useful  ([@mansona](https://github.com/mansona))
+
+#### :bug: Bug Fix
+* `lint-to-the-future`
+  * [#57](https://github.com/mansona/lint-to-the-future/pull/57) fix issues with light mode completed rules section ([@mansona](https://github.com/mansona))
+
+#### Committers: 1
+- Chris Manson ([@mansona](https://github.com/mansona))
+
 ## Release (2024-11-22)
 
 lint-to-the-future 2.4.1 (patch)
