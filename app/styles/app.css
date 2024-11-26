@@ -1,13 +1,25 @@
 /* stylelint-disable prettier/prettier, rule-empty-line-before, color-function-notation, declaration-block-no-shorthand-property-overrides, alpha-value-notation */
 /* stylelint-disable declaration-block-no-redundant-longhand-properties */
+
+:root {
+  --light-link-color: #5C8001;
+  --chart-border-radius: 8px;
+}
+
 body {
   background-color: #EDF7D2;
   font-family: 'Source Sans Pro', sans-serif;
   margin: 20px;
 }
+
 a {
-  color: #5C8001;
+  color: var(--light-link-color);
 }
+
+.plain-link {
+  color: black;
+}
+
 .graphs {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(600px, 100%), 1fr));
@@ -16,7 +28,7 @@ a {
 
 .lttf-chart {
   background-color: white;
-  border-radius: 8px;
+  border-radius: var(--chart-border-radius);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
 }
@@ -92,11 +104,34 @@ a {
   background-color: #3277b3;
 }
 
+details {
+  margin: 20px 0;
+  border: var(--light-link-color) 1px solid;
+}
+
+summary {
+  cursor: pointer;
+  padding: 20px;
+}
+
+details > .graphs {
+  margin-bottom: 20px;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #1A1A2E;
     color: white;
   }
+
+  .plain-link {
+    color: white
+  }
+
+  details {
+    border-color: #0F3460;
+  }
+
   a {
     color: #FBBF24;
   }
@@ -113,6 +148,10 @@ a {
   svg.close path {
     fill: white;
   }
+
+  summary {
+    color: white;
+  }
 }
 
 footer {
@@ -122,20 +161,4 @@ footer {
 /* This is a hack to remove the y-markers that are designed to remove fractional numbers from the axis */
 .frappe-chart .y-markers {
   display: none;
-}
-
-details {
-  margin: 20px 0;
-  border: #0F3460 3px solid;
-}
-
-summary {
-  background-color: #16213E;
-  color: white;
-  cursor: pointer;
-  padding: 20px;
-}
-
-details[open] summary {
-  margin-bottom: 20px;
 }
