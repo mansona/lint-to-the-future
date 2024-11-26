@@ -33,39 +33,6 @@ a {
   padding: 20px;
 }
 
-.modal {
-  position: fixed;
-  background-color: rgba(255, 255, 255, 0.25);
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.3);
-}
-.modal-content {
-  position: fixed;
-  top: 50px;
-  bottom: 50px;
-  right: 50px;
-  left: 50px;
-  border-radius: 25px;
-  padding: 0 25px 25px;
-  background-color: white;
-  overflow: scroll;
-}
-
-.modal-content > .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-}
-
-.modal-content > h1 {
-  margin-top: 0;
-}
-
 .flex {
   display: flex;
   align-items: baseline;

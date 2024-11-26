@@ -1,7 +1,9 @@
 <div class="lttf-chart" data-test-chart={{@rule}}>
   <div class="flex">
     <h2>{{this.ruleName}}</h2>
-    <LinkTo @route="files" @model={{@rule}} data-test-view-files={{@rule}}>view files</LinkTo>
+    {{#if this.shouldShowLink}}
+      <LinkTo @route="rule" @model={{@rule}} data-test-view-files={{@rule}}>view files</LinkTo>
+    {{/if}}
   </div>
   <div {{did-insert this.renderChart}}></div>
   <div class="stv-radio-buttons-wrapper">

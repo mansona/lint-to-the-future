@@ -80,6 +80,10 @@ export default class ChartComponent extends Component {
     return guidFor(this);
   }
 
+  get shouldShowLink() {
+    return this.args.showLink ?? true;
+  }
+
   @action
   selectTimeSeries(series) {
     this.timeSeries = series;
