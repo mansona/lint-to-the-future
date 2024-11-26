@@ -18,7 +18,7 @@ module('Acceptance | basic', function(hooks) {
     assert.dom('[data-test-chart="lint-to-the-future-eslint:prettier/prettier"] [data-test-time-button="weekly"]').isChecked();
 
     await click('[data-test-view-files="lint-to-the-future-eslint:prettier/prettier"]');
-    assert.equal(currentURL(), '/rule/lint-to-the-future-eslint:prettier%2Fprettier');
+    assert.equal(currentURL(), '/rule/lint-to-the-future-eslint:prettier/prettier');
     assert.dom('[data-test-file]').exists({count: 32})
   });
 

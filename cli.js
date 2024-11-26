@@ -3,7 +3,7 @@
 
 const { join } = require('path');
 const { writeFileSync, readFileSync } = require('fs');
-const { copy } = require('fs-extra');
+const { copy, mkdirp } = require('fs-extra');
 const importCwd = require('import-cwd');
 const fetch = require('node-fetch');
 const { Command } = require('commander');
@@ -57,7 +57,7 @@ async function list(lttfPlugins, previousResultsPath) {
   return previousResults;
 }
 
-async function output(lttfPlugins, outputPath, rootUrl, previousResultsPath) {
+async function output({ lttfPlugins, outputPath, rootUrl, previousResultsPath, outputFolders }) {
   if (!output) {
     console.error('You must provide an output directory to `output` with -o');
   }
@@ -78,6 +78,26 @@ async function output(lttfPlugins, outputPath, rootUrl, previousResultsPath) {
         .replace(regex, `<meta name="lint-to-the-future/config/environment" content="${encodeURIComponent(JSON.stringify(envContent))}" />`)
         .replace(/"\/assets\//g, `"/${rootUrl}/assets/`),
     );
+  }
+
+  if (outputFolders) {
+    let index = readFileSync(join(outputPath, 'index.html'), 'utf8');
+    const ruleNames = new Set();
+
+    for( let [, plugins] of Object.entries(ouputResult)) {
+
+      for(let plugin in plugins ) {
+        for (let rule in plugins[plugin]) {
+          ruleNames.add(`${plugin}:${rule}`)
+        }
+      }
+    }
+
+    for (let ruleName of ruleNames) {
+      let ruleFolder = join(outputPath, 'rule', ruleName);
+      await mkdirp(ruleFolder);
+      writeFileSync(join(ruleFolder, 'index.html'), index)
+    }
   }
 
   writeFileSync(join(outputPath, 'data.json'), JSON.stringify(ouputResult));
@@ -127,9 +147,10 @@ program
   .requiredOption('-o, --output <path>', 'Output path for dashboard webpage')
   .option('--rootUrl <path|url>', 'Required if the dashboard is not hosted on your servers rootUrl')
   .option('--previous-results <path|url>', 'This should be a path or URL to the previous data.json file that was generated when this command was last run')
-  .action(async ({output: outputPath, rootUrl, previousResults}) => {
+  .option('--output-folders', 'Creates a folder structure for each rule page')
+  .action(async ({output: outputPath, rootUrl, previousResults, outputFolders }) => {
     let lttfPlugins = await getLttfPlugins();
-    output(lttfPlugins, outputPath, rootUrl, previousResults);
+    output({ lttfPlugins, outputPath, rootUrl, previousResults, outputFolders });
   })
 
 program

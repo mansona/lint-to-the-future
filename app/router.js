@@ -9,5 +9,5 @@ export default class Router extends EmberRouter {
 
 Router.map(function() {
   this.route('files', { path: 'files/:id'});
-  this.route('rule', { path: 'rule/:id'});
+  this.route('rule', { path: 'rule/*'});
 });

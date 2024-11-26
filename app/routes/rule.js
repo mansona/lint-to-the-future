@@ -3,20 +3,27 @@ import Route from '@ember/routing/route';
 export default class RuleRoute extends Route {
   model(params) {
     let application = this.modelFor('application');
-    let ruleValue = application.data[params.id];
+    // this seems like a bug in Ember 🙈 but it works so I'm going with it
+    let ruleId = params[''];
+
+    // this is to prevent hosts that add an automatic trailing slash to the url
+    // from adding that to what we think the ruleId is
+    ruleId = ruleId.replace(/\/$/, '');
+
+    let ruleValue = application.data[ruleId];
     let keys = Object.keys(ruleValue);
 
     // the keys are ISO dates, so sorting them alphabetically always sorts them
     // in date order too :tada:
     let max = keys.sort((a, b) => a > b)[keys.length - 1];
 
-    const pluginName = params.id.split(':')[0];
-    const ruleName = params.id.split(':').slice(1).join(':');
+    const pluginName = ruleId.split(':')[0];
+    const ruleName = ruleId.split(':').slice(1).join(':');
 
     // this just returns the most recent list of files
     return {
       fileList: ruleValue[max],
-      rule: params.id,
+      rule: ruleId,
       pluginName,
       ruleName,
       ruleData: ruleValue,
