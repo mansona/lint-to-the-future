@@ -1,0 +1,15 @@
+<div class="graphs">
+  {{#each-in this.rules.rulesToComplete as |key value|}}
+    <Chart @rule={{key}} @data={{value}} @highestDate={{@model.highestDate}} />
+  {{/each-in}}
+</div>
+
+
+<details data-test-completed-rules>
+  <summary>Completed Rules</summary>
+  <div class="graphs">
+    {{#each-in this.rules.completedRules as |key value|}}
+      <Chart @rule={{key}} @data={{value}} @highestDate={{@model.highestDate}} />
+    {{/each-in}}
+  </div>
+</details>

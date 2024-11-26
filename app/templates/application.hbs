@@ -1,22 +1,9 @@
-<h1>Lint to the Future Dashboard</h1>
-<div class="graphs">
-  {{#each-in this.rules.rulesToComplete as |key value|}}
-    <Chart @rule={{key}} @data={{value}} @highestDate={{@model.highestDate}} />
-  {{/each-in}}
-</div>
+{{page-title "Lint to the Future Dashboard"}}
 
+<LinkTo @route="index" class="plain-link"><h1>Lint to the Future Dashboard</h1></LinkTo>
 
-<details data-test-completed-rules>
-  <summary>Completed Rules</summary>
-  <div class="graphs">
-    {{#each-in this.rules.completedRules as |key value|}}
-      <Chart @rule={{key}} @data={{value}} @highestDate={{@model.highestDate}} />
-    {{/each-in}}
-  </div>
-</details>
+{{outlet}}
 
 <footer>
   This page was generated with <a href="https://github.com/mansona/lint-to-the-future">Lint to the Future</a> which was built with ❤️ by <a href="https://twitter.com/real_ate">Chris Manson</a>
 </footer>
-
-{{outlet}}
