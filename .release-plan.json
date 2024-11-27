@@ -1,21 +1,21 @@
 {
   "solution": {
     "lint-to-the-future": {
-      "impact": "minor",
-      "oldVersion": "2.4.1",
-      "newVersion": "2.5.0",
+      "impact": "patch",
+      "oldVersion": "2.5.0",
+      "newVersion": "2.5.1",
       "constraints": [
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
         {
           "impact": "patch",
           "reason": "Appears in changelog section :bug: Bug Fix"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./package.json"
     }
   },
-  "description": "## Release (2024-11-26)\n\nlint-to-the-future 2.5.0 (minor)\n\n#### :rocket: Enhancement\n* `lint-to-the-future`\n  * [#59](https://github.com/mansona/lint-to-the-future/pull/59) add ability to output folders for better SSG hosting  ([@mansona](https://github.com/mansona))\n  * [#58](https://github.com/mansona/lint-to-the-future/pull/58) Rename \"files\" route to \"rule\", make it a real route instead of a modal, and make it more useful  ([@mansona](https://github.com/mansona))\n\n#### :bug: Bug Fix\n* `lint-to-the-future`\n  * [#57](https://github.com/mansona/lint-to-the-future/pull/57) fix issues with light mode completed rules section ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
+  "description": "## Release (2024-11-27)\n\nlint-to-the-future 2.5.1 (patch)\n\n#### :bug: Bug Fix\n* `lint-to-the-future`\n  * [#63](https://github.com/mansona/lint-to-the-future/pull/63) Fix output with --previous-results ([@mansona](https://github.com/mansona))\n\n#### :house: Internal\n* `lint-to-the-future`\n  * [#61](https://github.com/mansona/lint-to-the-future/pull/61) run prettier on test files ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
 }

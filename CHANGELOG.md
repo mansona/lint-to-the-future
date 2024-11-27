@@ -1,5 +1,20 @@
 # Changelog
 
+## Release (2024-11-27)
+
+lint-to-the-future 2.5.1 (patch)
+
+#### :bug: Bug Fix
+* `lint-to-the-future`
+  * [#63](https://github.com/mansona/lint-to-the-future/pull/63) Fix output with --previous-results ([@mansona](https://github.com/mansona))
+
+#### :house: Internal
+* `lint-to-the-future`
+  * [#61](https://github.com/mansona/lint-to-the-future/pull/61) run prettier on test files ([@mansona](https://github.com/mansona))
+
+#### Committers: 1
+- Chris Manson ([@mansona](https://github.com/mansona))
+
 ## Release (2024-11-26)
 
 lint-to-the-future 2.5.0 (minor)
