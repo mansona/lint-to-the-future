@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { execaNode } from 'execa';
 import temp from 'temp';
 import { load } from 'cheerio';
@@ -6,32 +5,52 @@ import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { expect } from 'chai';
 
-  describe("output command", function() {
-    this.beforeAll(function() {
-      expect(existsSync("dist"), "you need to run 'npm run prepublishOnly' at least once before running this test").to.be.ok;
-    });
+describe('output command', function () {
+  this.beforeAll(function () {
+    expect(
+      existsSync('dist'),
+      "you need to run 'npm run prepublishOnly' at least once before running this test",
+    ).to.be.ok;
+  });
 
-    let tempDir;
+  let tempDir;
 
-    beforeEach(async function() {
-      tempDir = await temp.mkdir('super-app');
-    });
+  beforeEach(async function () {
+    tempDir = await temp.mkdir('super-app');
+  });
 
-    it("should have no rootUrl if one wasn't provided", async function() {
-      await execaNode('./cli.js', ['output', '-o', tempDir]);
-      const indexFile = readFileSync(join(tempDir, 'index.html'));
+  it("should have no rootUrl if one wasn't provided", async function () {
+    await execaNode('./cli.js', ['output', '-o', tempDir]);
 
-      const parsedFile = load(indexFile);
+    const indexFile = readFileSync(join(tempDir, 'index.html'));
 
-      expect(JSON.parse(decodeURIComponent(parsedFile('meta[name="lint-to-the-future/config/environment"]').attr('content'))).rootURL).to.eql('/');
-    });
+    const parsedFile = load(indexFile);
 
-    it("should use the provided rootUrl", async function() {
-      await execaNode('./cli.js', ['output', '-o', tempDir, '--rootUrl', 'face']);
-      const indexFile = readFileSync(join(tempDir, 'index.html'));
+    expect(
+      JSON.parse(
+        decodeURIComponent(
+          parsedFile('meta[name="lint-to-the-future/config/environment"]').attr(
+            'content',
+          ),
+        ),
+      ).rootURL,
+    ).to.eql('/');
+  });
 
-      const parsedFile = load(indexFile);
+  it('should use the provided rootUrl', async function () {
+    await execaNode('./cli.js', ['output', '-o', tempDir, '--rootUrl', 'face']);
+    const indexFile = readFileSync(join(tempDir, 'index.html'));
 
-      expect(JSON.parse(decodeURIComponent(parsedFile('meta[name="lint-to-the-future/config/environment"]').attr('content'))).rootURL).to.eql('/face/');
-    })
-  })
+    const parsedFile = load(indexFile);
+
+    expect(
+      JSON.parse(
+        decodeURIComponent(
+          parsedFile('meta[name="lint-to-the-future/config/environment"]').attr(
+            'content',
+          ),
+        ),
+      ).rootURL,
+    ).to.eql('/face/');
+  });
+});
