@@ -1,9 +1,10 @@
-import { execaNode } from 'execa';
-import temp from 'temp';
+import { $ } from 'execa';
+
 import { load } from 'cheerio';
 import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { expect } from 'chai';
+import { Project } from 'fixturify-project';
 
 describe('output command', function () {
   this.beforeAll(function () {
@@ -13,16 +14,36 @@ describe('output command', function () {
     ).to.be.ok;
   });
 
-  let tempDir;
+  let project;
+  let outputDir;
 
   beforeEach(async function () {
-    tempDir = await temp.mkdir('super-app');
+    project = new Project('test-app', '1.1.0', {
+      files: {
+        'index.js': `/* eslint-disable debugger */`,
+      },
+    });
+
+    project.linkDevDependency('lint-to-the-future', {
+      baseDir: process.cwd(),
+      resolveName: '.',
+    });
+
+    project.linkDevDependency('lint-to-the-future-eslint', {
+      baseDir: process.cwd(),
+    });
+
+    await project.write();
+
+    outputDir = join(project.baseDir, 'lttf-output');
   });
 
   it("should have no rootUrl if one wasn't provided", async function () {
-    await execaNode('./cli.js', ['output', '-o', tempDir]);
+    await $({
+      cwd: project.baseDir,
+    })`lttf output -o ${outputDir}`;
 
-    const indexFile = readFileSync(join(tempDir, 'index.html'));
+    const indexFile = readFileSync(join(outputDir, 'index.html'));
 
     const parsedFile = load(indexFile);
 
@@ -38,8 +59,11 @@ describe('output command', function () {
   });
 
   it('should use the provided rootUrl', async function () {
-    await execaNode('./cli.js', ['output', '-o', tempDir, '--rootUrl', 'face']);
-    const indexFile = readFileSync(join(tempDir, 'index.html'));
+    await $({
+      cwd: project.baseDir,
+    })`lttf output -o ${outputDir} --rootUrl face`;
+
+    const indexFile = readFileSync(join(outputDir, 'index.html'));
 
     const parsedFile = load(indexFile);
 
