@@ -150,7 +150,7 @@ program
   .option('--output-folders', 'Creates a folder structure for each rule page')
   .action(async ({output: outputPath, rootUrl, previousResults, outputFolders }) => {
     let lttfPlugins = await getLttfPlugins();
-    output({ lttfPlugins, outputPath, rootUrl, previousResults, outputFolders });
+    output({ lttfPlugins, outputPath, rootUrl, previousResultsPath: previousResults, outputFolders });
   })
 
 program
