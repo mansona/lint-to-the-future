@@ -21,6 +21,10 @@ describe('output command', function () {
     project = new Project('test-app', '1.1.0', {
       files: {
         'index.js': `/* eslint-disable debugger */`,
+        // only used in one test
+        'previousResults.json': `{
+  "2024-09-27": { "lint-to-the-future-eslint": { "debugger": ["some-file.js"] } }
+}`,
       },
     });
 
@@ -56,6 +60,33 @@ describe('output command', function () {
         ),
       ).rootURL,
     ).to.eql('/');
+  });
+
+  it('should only have one day of rules in the json if no --previous-results was passed', async function () {
+    await $({
+      cwd: project.baseDir,
+    })`lttf output -o ${outputDir}`;
+
+    const dataFile = JSON.parse(readFileSync(join(outputDir, 'data.json')));
+    const dates = Object.keys(dataFile);
+
+    expect(dates).to.have.lengthOf(1);
+  });
+
+  it('should combine previous results if --previous-results was passed', async () => {
+    await $({
+      cwd: project.baseDir,
+    })`lttf output -o ${outputDir} --previous-results ./previousResults.json`;
+
+    const dataFile = JSON.parse(readFileSync(join(outputDir, 'data.json')));
+    const dates = Object.keys(dataFile);
+
+    expect(dates).to.have.lengthOf(2);
+    expect(dataFile[dates[0]]).to.deep.equal({
+      'lint-to-the-future-eslint': {
+        debugger: 1,
+      },
+    });
   });
 
   it('should use the provided rootUrl', async function () {
