@@ -5,6 +5,7 @@ const { join } = require('path');
 const { writeFileSync, readFileSync } = require('fs');
 const { copy, mkdirp } = require('fs-extra');
 const importCwd = require('import-cwd');
+const resolveCwd = require('resolve-cwd');
 const fetch = require('node-fetch');
 const { Command } = require('commander');
 const { inspect } = require('util');
@@ -117,7 +118,7 @@ async function getLttfPlugins() {
     let mod;
 
     try {
-      mod = await import(join(process.cwd(), 'node_modules', name, 'main.mjs'));
+      mod = await import(resolveCwd(name));
     } catch (err) {
       // fallback to trying importCwd
       mod = importCwd(name);
