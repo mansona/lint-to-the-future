@@ -20,10 +20,28 @@ a {
   color: black;
 }
 
+.stats-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  grid-gap: 20px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background-color: white;
+  border-radius: var(--chart-border-radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.stat-card ul {
+  padding-left: inherit;
+}
+
 .graphs {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(600px, 100%), 1fr));
-  grid-gap: 20px
+  grid-gap: 20px;
 }
 
 .lttf-chart {
@@ -102,9 +120,11 @@ details > .graphs {
   a {
     color: #FBBF24;
   }
-  .lttf-chart {
+
+  .lttf-chart, .stat-card {
     background-color: #16213E;
   }
+
   .chart-container .axis {
     fill: white !important;
   }
@@ -128,4 +148,10 @@ footer {
 /* This is a hack to remove the y-markers that are designed to remove fractional numbers from the axis */
 .frappe-chart .y-markers {
   display: none;
+}
+
+/* helper classes */
+.my-2 {
+  margin-top: .5em;
+  margin-bottom: .5em;
 }

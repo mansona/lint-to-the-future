@@ -126,10 +126,25 @@
       "ember/no-empty-glimmer-component-classes": ["addon/components/es-link-card.js"],
       "ember/no-classic-components": ["addon/components/es-header-navbar-link.js"],
       "ember/no-classic-classes": ["addon/components/es-header-navbar-link.js", "addon/services/navbar.js", "tests/dummy/app/components/link-to.js"],
-      "ember/require-tagless-components": ["addon/components/es-header-navbar-link.js", "tests/dummy/app/components/link-to.js"],
+      "ember/require-tagless-components": 10,
       "ember/no-get": ["addon/components/es-header-navbar-link.js"],
       "ember/no-component-lifecycle-hooks": ["addon/components/es-header-navbar-link.js"],
       "ember/require-super-in-lifecycle-hooks": ["addon/components/es-header-navbar-link.js"]
+    }
+  },
+  "2021-04-09": {
+    "lint-to-the-future-ember-template": {
+      "require-valid-alt-text": 2,
+      "no-class:strange-name": 1
+    },
+    "lint-to-the-future-eslint": {
+      "prettier/prettier": 24,
+      "ember/no-classic-components": 1,
+      "ember/no-classic-classes": 6,
+      "ember/require-tagless-components": 2,
+      "ember/no-get": 1,
+      "ember/no-component-lifecycle-hooks": 1,
+      "ember/require-super-in-lifecycle-hooks": 8
     }
   },
   "2021-04-10": {
@@ -139,12 +154,12 @@
     },
     "lint-to-the-future-eslint": {
       "prettier/prettier": ["addon/components/es-button.js", "addon/components/es-card-content.js", "addon/components/es-card.js", "addon/components/es-footer-contributions.js", "addon/components/es-footer-help.js", "addon/components/es-footer-info.js", "addon/components/es-footer-statement.js", "addon/components/es-footer.js", "addon/components/es-header-navbar-link.js", "addon/components/es-link-card.js", "addon/components/es-note.js", "addon/constants/es-footer.js", "addon/services/navbar.js", "app/components/es-button.js", "app/components/es-card-content.js", "app/components/es-card.js", "app/components/es-footer.js", "app/components/es-header.js", "app/components/es-link-card.js", "app/components/es-note.js", "ember-cli-build.js", "index.js", "tests/acceptance/visual-regression-test-test.js", "tests/dummy/app/components/link-to.js", "tests/dummy/app/helpers/increment.js", "tests/dummy/config/environment.js", "tests/integration/components/es-button-test.js", "tests/integration/components/es-card-test.js", "tests/integration/components/es-footer-test.js", "tests/integration/components/es-header-test.js", "tests/integration/components/es-note-test.js", "tests/integration/components/es-progress-bar-test.js"],
-      "ember/no-classic-components": ["addon/components/es-header-navbar-link.js"],
-      "ember/no-classic-classes": ["addon/components/es-header-navbar-link.js", "addon/services/navbar.js", "tests/dummy/app/components/link-to.js"],
+      "ember/no-classic-components": ["addon/components/es-header-navbar-link.js", "addon/components/es-button.js", "addon/components/es-card-content.js", "addon/components/es-card.js", "addon/components/es-footer-contributions.js", "addon/components/es-footer-help.js"],
+      "ember/no-classic-classes": ["addon/components/es-header-navbar-link.js", "addon/services/navbar.js", "tests/dummy/app/components/link-to.js", "addon/components/es-button.js", "addon/components/es-card-content.js", "addon/components/es-card.js", "addon/components/es-footer-contributions.js", "addon/components/es-footer-help.js", "addon/components/es-footer-info.js", "addon/components/es-footer-statement.js", "addon/components/es-footer.js", "addon/components/es-header-navbar-link.js"],
       "ember/require-tagless-components": ["addon/components/es-header-navbar-link.js", "tests/dummy/app/components/link-to.js"],
+      "completely-new-rule/only-today-ever": ["addon/components/es-header-navbar-link.js", "tests/dummy/app/components/link-to.js"],
       "ember/no-get": ["addon/components/es-header-navbar-link.js"],
-      "ember/no-component-lifecycle-hooks": ["addon/components/es-header-navbar-link.js"],
-      "ember/require-super-in-lifecycle-hooks": ["addon/components/es-header-navbar-link.js"]
+      "ember/no-component-lifecycle-hooks": ["addon/components/es-header-navbar-link.js"]
     }
   }
 }
