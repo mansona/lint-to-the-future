@@ -1,0 +1,123 @@
+<details data-test-completed-rules>
+  <summary>Stats</summary>
+  <div class="stats-wrapper">
+    {{#if this.removedToday.size}}
+      <div class="stat-card">
+        🎉🌅 Rules removed today
+
+        <ul>
+          {{#each this.removedToday as |rule|}}
+            <li>
+              <LinkTo @route="rule" @model={{rule}}>{{rule}}</LinkTo>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+
+    {{#if this.removedThisWeek.size}}
+      <div class="stat-card">
+        🎉🗓️ Rules removed this week
+
+        <ul>
+          {{#each this.removedThisWeek as |rule|}}
+            <li>
+              <LinkTo @route="rule" @model={{rule}}>{{rule}}</LinkTo>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+
+    {{#if this.improvedToday}}
+      <div class="stat-card">
+        📉🌅 Biggest improvement since yesterday:
+        <div class="my-2">
+          <LinkTo
+            @route="rule"
+            @model={{this.improvedToday.rule}}
+          >{{this.improvedToday.rule}}</LinkTo></div>
+        which has removed
+        {{absolute this.improvedToday.value}}
+        files
+      </div>
+    {{/if}}
+
+    {{#if this.improvedThisWeek}}
+      <div class="stat-card">
+        📉🗓️ Biggest improvment this week:
+
+        <div class="my-2">
+          <LinkTo @route="rule" @model={{this.improvedThisWeek.rule}}>
+            {{this.improvedThisWeek.rule}}</LinkTo>
+        </div>
+        which has removed
+        {{absolute this.improvedThisWeek.value}}
+        files
+
+      </div>
+    {{/if}}
+  </div>
+
+  <div class="stats-wrapper">
+    {{#if this.newToday.size}}
+      <div class="stat-card">
+        🆕🌅 New rules added since yesterday:
+
+        <ul>
+          {{#each this.newToday as |rule|}}
+            <li><LinkTo @route="rule" @model={{rule}}>{{rule}}</LinkTo></li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+
+    {{#if this.newThisWeek.size}}
+      <div class="stat-card">
+        🆕🗓️ New rules added this week:
+
+        <ul>
+          {{#each this.newThisWeek as |rule|}}
+            <li><LinkTo @route="rule" @model={{rule}}>{{rule}}</LinkTo></li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+
+    {{#if this.mostAddedToday}}
+      <div class="stat-card">
+        📈🌅 Most new files since yesterday:
+
+        <div class="my-2">
+          <LinkTo
+            @route="rule"
+            @model={{this.mostAddedToday.rule}}
+          >{{this.mostAddedToday.rule}}</LinkTo>
+        </div>
+
+        which added
+        {{this.mostAddedToday.value}}
+        files
+
+      </div>
+    {{/if}}
+
+    {{#if this.mostAddedThisWeek}}
+      <div class="stat-card">
+        📈🗓️ Most new files this week:
+
+        <div class="my-2">
+          <LinkTo
+            @route="rule"
+            @model={{this.mostAddedThisWeek.rule}}
+          >{{this.mostAddedThisWeek.rule}}</LinkTo>
+        </div>
+
+        which added
+        {{this.mostAddedThisWeek.value}}
+        files
+
+      </div>
+    {{/if}}
+  </div>
+</details>

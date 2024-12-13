@@ -1,3 +1,5 @@
+<Stats @data={{@model.stats}}/>
+
 <div class="graphs">
   {{#each-in this.rules.rulesToComplete as |key value|}}
     <Chart @rule={{key}} @data={{value}} @highestDate={{@model.highestDate}} />

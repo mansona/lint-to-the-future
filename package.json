@@ -37,7 +37,8 @@
     "commander": "^9.4.1",
     "fs-extra": "^7.0.1",
     "import-cwd": "^3.0.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "temporal-polyfill": "^0.2.5"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
