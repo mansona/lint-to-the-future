@@ -10,7 +10,7 @@ module('Acceptance | basic', function(hooks) {
     await visit('/');
 
     assert.equal(currentURL(), '/');
-    assert.dom('[data-test-chart]').exists({count: 10})
+    assert.dom('[data-test-chart]').exists({count: 11})
     // await this.pauseTest();
 
     assert.dom('[data-test-chart="lint-to-the-future-ember-template:require-valid-alt-text"] [data-test-time-button="monthly"]').isChecked();
@@ -29,6 +29,6 @@ module('Acceptance | basic', function(hooks) {
     // top level charts
     assert.dom('.ember-application > div > [data-test-chart]').exists({count: 9})
 
-    assert.dom('[data-test-completed-rules] [data-test-chart]').exists({count: 1});
+    assert.dom('[data-test-completed-rules] [data-test-chart]').exists({count: 2});
   })
 });
