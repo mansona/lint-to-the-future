@@ -9,7 +9,7 @@
 
 <details data-test-completed-rules>
   <summary>Completed Rules</summary>
-  <div class="graphs">
+  <div class="graphs px-2">
     {{#each-in this.rules.completedRules as |key value|}}
       <Chart @rule={{key}} @data={{value}} @highestDate={{@model.highestDate}} />
     {{/each-in}}
