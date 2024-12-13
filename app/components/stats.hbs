@@ -1,6 +1,6 @@
 <details data-test-completed-rules>
   <summary>Stats</summary>
-  <div class="stats-wrapper">
+  <div class="stats-wrapper px-2">
     {{#if this.removedToday.size}}
       <div class="stat-card">
         🎉🌅 Rules removed today
@@ -32,34 +32,39 @@
     {{#if this.improvedToday}}
       <div class="stat-card">
         📉🌅 Biggest improvement since yesterday:
-        <div class="my-2">
-          <LinkTo
-            @route="rule"
-            @model={{this.improvedToday.rule}}
-          >{{this.improvedToday.rule}}</LinkTo></div>
-        which has removed
-        {{absolute this.improvedToday.value}}
-        files
+        <ul>
+          <li>
+            <LinkTo
+              @route="rule"
+              @model={{this.improvedToday.rule}}
+            >{{this.improvedToday.rule}}</LinkTo>
+            which has been removed from
+            {{absolute this.improvedToday.value}}
+            files
+          </li>
+        </ul>
+
       </div>
     {{/if}}
 
     {{#if this.improvedThisWeek}}
       <div class="stat-card">
-        📉🗓️ Biggest improvment this week:
+        📉🗓️ Biggest improvement this week:
 
-        <div class="my-2">
-          <LinkTo @route="rule" @model={{this.improvedThisWeek.rule}}>
-            {{this.improvedThisWeek.rule}}</LinkTo>
-        </div>
-        which has removed
-        {{absolute this.improvedThisWeek.value}}
-        files
-
+        <ul>
+          <li>
+            <LinkTo @route="rule" @model={{this.improvedThisWeek.rule}}>
+              {{this.improvedThisWeek.rule}}</LinkTo>
+            which has been removed from
+            {{absolute this.improvedThisWeek.value}}
+            files
+          </li>
+        </ul>
       </div>
     {{/if}}
   </div>
 
-  <div class="stats-wrapper">
+  <div class="stats-wrapper px-2">
     {{#if this.newToday.size}}
       <div class="stat-card">
         🆕🌅 New rules added since yesterday:
@@ -88,16 +93,18 @@
       <div class="stat-card">
         📈🌅 Most new files since yesterday:
 
-        <div class="my-2">
-          <LinkTo
-            @route="rule"
-            @model={{this.mostAddedToday.rule}}
-          >{{this.mostAddedToday.rule}}</LinkTo>
-        </div>
+        <ul>
+          <li>
+            <LinkTo
+              @route="rule"
+              @model={{this.mostAddedToday.rule}}
+            >{{this.mostAddedToday.rule}}</LinkTo>
 
-        which added
-        {{this.mostAddedToday.value}}
-        files
+            which has been added to
+            {{this.mostAddedToday.value}}
+            files
+          </li>
+        </ul>
 
       </div>
     {{/if}}
@@ -105,18 +112,17 @@
     {{#if this.mostAddedThisWeek}}
       <div class="stat-card">
         📈🗓️ Most new files this week:
-
-        <div class="my-2">
-          <LinkTo
-            @route="rule"
-            @model={{this.mostAddedThisWeek.rule}}
-          >{{this.mostAddedThisWeek.rule}}</LinkTo>
-        </div>
-
-        which added
-        {{this.mostAddedThisWeek.value}}
-        files
-
+        <ul>
+          <li>
+            <LinkTo
+              @route="rule"
+              @model={{this.mostAddedThisWeek.rule}}
+            >{{this.mostAddedThisWeek.rule}}</LinkTo>
+            which has been added to
+            {{this.mostAddedThisWeek.value}}
+            files
+          </li>
+        </ul>
       </div>
     {{/if}}
   </div>
