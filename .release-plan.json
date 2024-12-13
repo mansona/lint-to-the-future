@@ -1,17 +1,17 @@
 {
   "solution": {
     "lint-to-the-future": {
-      "impact": "minor",
-      "oldVersion": "2.5.1",
-      "newVersion": "2.6.0",
+      "impact": "patch",
+      "oldVersion": "2.6.0",
+      "newVersion": "2.6.1",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./package.json"
     }
   },
-  "description": "## Release (2024-12-13)\n\nlint-to-the-future 2.6.0 (minor)\n\n#### :rocket: Enhancement\n* `lint-to-the-future`\n  * [#67](https://github.com/mansona/lint-to-the-future/pull/67) Add stats to the lttf dashboard ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
+  "description": "## Release (2024-12-13)\n\nlint-to-the-future 2.6.1 (patch)\n\n#### :bug: Bug Fix\n* `lint-to-the-future`\n  * [#69](https://github.com/mansona/lint-to-the-future/pull/69) improve the design of the stats section ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
 }

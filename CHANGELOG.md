@@ -2,6 +2,17 @@
 
 ## Release (2024-12-13)
 
+lint-to-the-future 2.6.1 (patch)
+
+#### :bug: Bug Fix
+* `lint-to-the-future`
+  * [#69](https://github.com/mansona/lint-to-the-future/pull/69) improve the design of the stats section ([@mansona](https://github.com/mansona))
+
+#### Committers: 1
+- Chris Manson ([@mansona](https://github.com/mansona))
+
+## Release (2024-12-13)
+
 lint-to-the-future 2.6.0 (minor)
 
 #### :rocket: Enhancement
