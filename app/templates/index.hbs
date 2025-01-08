@@ -1,4 +1,7 @@
-<Stats @data={{@model.stats}}/>
+
+{{#if @model.stats}}
+  <Stats @data={{@model.stats}}/>
+{{/if}}
 
 <div class="graphs">
   {{#each-in this.rules.rulesToComplete as |key value|}}

@@ -92,7 +92,7 @@ export default class ApplicationRoute extends Route {
     return {
       data: timeSeriesData,
       highestDate: globalHighestDate,
-      stats,
+      stats: Object.keys(stats).length ? stats : undefined,
     }
   }
 }

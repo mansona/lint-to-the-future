@@ -4,7 +4,9 @@ export default class Stats extends Component {
   get improvedToday() {
     let biggest;
 
-    for (let [rule, value] of Object.entries(this.args.data?.today?.changed)) {
+    for (let [rule, value] of Object.entries(
+      this.args.data?.today?.changed ?? {},
+    )) {
       if (value > 0) {
         continue;
       }
@@ -24,7 +26,7 @@ export default class Stats extends Component {
     let biggest;
 
     for (let [rule, value] of Object.entries(
-      this.args.data?.thisWeek?.changed,
+      this.args.data?.thisWeek?.changed ?? {},
     )) {
       if (
         value > 0 ||
@@ -51,7 +53,9 @@ export default class Stats extends Component {
   get mostAddedToday() {
     let biggest;
 
-    for (let [rule, value] of Object.entries(this.args.data?.today?.changed)) {
+    for (let [rule, value] of Object.entries(
+      this.args.data?.today?.changed ?? {},
+    )) {
       if (value < 0) {
         continue;
       }
@@ -71,7 +75,7 @@ export default class Stats extends Component {
     let biggest;
 
     for (let [rule, value] of Object.entries(
-      this.args.data?.thisWeek?.changed,
+      this.args.data?.thisWeek?.changed ?? {},
     )) {
       if (
         value < 0 ||
@@ -99,7 +103,7 @@ export default class Stats extends Component {
   }
 
   get newThisWeek() {
-    return new Set(this.args.data.thisWeek.added).difference(this.newToday);
+    return new Set(this.args.data?.thisWeek?.added).difference(this.newToday);
   }
 
   get removedToday() {
@@ -107,7 +111,7 @@ export default class Stats extends Component {
   }
 
   get removedThisWeek() {
-    return new Set(this.args.data.thisWeek.removed).difference(
+    return new Set(this.args.data?.thisWeek?.removed).difference(
       this.removedToday,
     );
   }
