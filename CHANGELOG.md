@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-01-08)
+
+lint-to-the-future 2.6.2 (patch)
+
+#### :bug: Bug Fix
+* `lint-to-the-future`
+  * [#71](https://github.com/mansona/lint-to-the-future/pull/71) make sure lack of stats doesn't crash the app ([@mansona](https://github.com/mansona))
+
+#### Committers: 1
+- Chris Manson ([@mansona](https://github.com/mansona))
+
 ## Release (2024-12-13)
 
 lint-to-the-future 2.6.1 (patch)
