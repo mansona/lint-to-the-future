@@ -82,9 +82,12 @@ on:
 
 jobs:
   deploy:
-    uses: mansona/lint-to-the-future-dashboard-action/.github/workflows/dashboard.yml@main
-    with:
-      folder: ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: mansona/lttf-dashboard@v1
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
 ```
 
 And that will start updating your dashboard when you push something to your master or main branch 🎉 Just remember to enable GitHub pages for your repo on the `gh-pages` branch 👍
