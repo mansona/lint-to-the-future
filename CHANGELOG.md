@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-03-07)
+
+lint-to-the-future 2.6.3 (patch)
+
+#### :memo: Documentation
+* `lint-to-the-future`
+  * [#74](https://github.com/mansona/lint-to-the-future/pull/74) fix dashboard action docs ([@mansona](https://github.com/mansona))
+
+#### Committers: 1
+- Chris Manson ([@mansona](https://github.com/mansona))
+
 ## Release (2025-01-08)
 
 lint-to-the-future 2.6.2 (patch)
