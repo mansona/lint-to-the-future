@@ -177,7 +177,11 @@ async function getLttfPlugins() {
   let lttfPluginsNames = [
     ...Object.keys(currentPackageJSON.devDependencies || {}),
     ...Object.keys(currentPackageJSON.dependencies || {}),
-  ].filter((dep) => dep.startsWith('lint-to-the-future-'));
+  ].filter(
+    (dep) =>
+      dep.startsWith('lint-to-the-future-') ||
+      dep.includes('/lint-to-the-future-'),
+  );
 
   let lttfPlugins = [];
 
