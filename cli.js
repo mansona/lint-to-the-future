@@ -181,18 +181,20 @@ program
   .description('Add file-based ignores to any file that is currently erroring')
   .option('-p, --plugin <string>', 'only run ignore on one plugin')
   .option('-f, --filter <string>', 'only apply to the filtered files')
+  .option('-c, --concurrency <number>', 'number of concurrent file operations to use. Use "0" for "auto" to have tools determine for themselves the number of CPU cores they should use', 0)
   .action(async (options) => {
+    const concurrency = options.concurrency === 0 ? 'auto' : parseInt(options.concurrency, 10);
 
     function executePlugin(plugin) {
       // this makes sure that even when
       if (plugin.import.capabilities?.includes('filter-ignore')) {
-        return plugin.import.ignoreAll({filter: options.filter});
+        return plugin.import.ignoreAll({filter: options.filter, concurrency });
       } else {
         if (options.filter) {
           program.error(`Plugin ${plugin.name} does not support passing '--filter' to the ignore command. Please update or contact the plugin developers`);
           return;
         }
-        plugin.import.ignoreAll()
+        plugin.import.ignoreAll({ concurrency });
       }
     }
 
