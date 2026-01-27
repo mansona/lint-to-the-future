@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const cliPath = join(__dirname, '../cli.js');
 
-describe('remove command', function () {
+describe('ignore command', function () {
   let project;
 
   beforeEach(async function () {
@@ -36,9 +36,9 @@ describe('remove command', function () {
 
     project.addDependency('lint-to-the-future-old-plugin', {
       files: {
-        'index.js': `function ignoreAll(someUnknownParam = "old-plugin") {
+        'index.js': `function ignoreAll() {
           // we need to communicate via stdout since we're calling this via a different process
-          console.log(\`ignoredAll from \${someUnknownParam}\`);
+          console.log('ignoredAll from old-plugin. Args:', JSON.stringify(arguments));
         }
         module.exports = {
           ignoreAll,
@@ -55,8 +55,8 @@ describe('remove command', function () {
     result = await execa(cliPath, ['ignore'], { cwd: project.baseDir });
 
     expect(result.stdout).to.equal(
-      `ignoredAll from fake-plugin. Args: {"0":{}}
-ignoredAll from old-plugin`,
+      `ignoredAll from fake-plugin. Args: {"0":{"concurrency":"auto"}}
+ignoredAll from old-plugin. Args: {"0":{"concurrency":"auto"}}`,
     );
 
     expect(result.exitCode).to.equal(0);
@@ -72,7 +72,7 @@ ignoredAll from old-plugin`,
     );
 
     expect(result.stdout).to.equal(
-      `ignoredAll from fake-plugin. Args: {"0":{}}`,
+      `ignoredAll from fake-plugin. Args: {"0":{"concurrency":"auto"}}`,
     );
 
     expect(result.exitCode).to.equal(0);
@@ -107,7 +107,7 @@ Could not find plugin with specified name fancy-plugin. Available plugins are: l
       expect(error.message).to.equal(
         `Command failed with exit code 1: ${cliPath} ignore -f app/**/*.gjs
 Plugin lint-to-the-future-old-plugin does not support passing '--filter' to the ignore command. Please update or contact the plugin developers
-ignoredAll from fake-plugin. Args: {"0":{"filter":"app/**/*.gjs"}}`,
+ignoredAll from fake-plugin. Args: {"0":{"filter":"app/**/*.gjs","concurrency":"auto"}}`,
       );
     }
 
@@ -128,7 +128,7 @@ ignoredAll from fake-plugin. Args: {"0":{"filter":"app/**/*.gjs"}}`,
 
     expect(result.exitCode).to.equal(0);
     expect(result.stdout).to.equal(
-      'ignoredAll from fake-plugin. Args: {"0":{"filter":"app/**/*.gjs"}}',
+      'ignoredAll from fake-plugin. Args: {"0":{"filter":"app/**/*.gjs","concurrency":"auto"}}',
     );
   });
 });
