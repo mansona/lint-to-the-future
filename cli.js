@@ -1,11 +1,19 @@
 #!/usr/bin/env node
+/* eslint-disable prettier/prettier */
 
-const { join } = require('path');
-const { writeFileSync, readFileSync } = require('fs');
-const { copy, mkdirp } = require('fs-extra');
-const importCwd = require('import-cwd');
-const { Command } = require('commander');
-const { inspect } = require('util');
+import { join, dirname } from 'path';
+import { writeFileSync, readFileSync } from 'fs';
+import fsExtra from 'fs-extra';
+import { createRequire } from 'module';
+import { fileURLToPath } from 'url';
+import { Command } from 'commander';
+import { inspect } from 'util';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const require = createRequire(import.meta.url);
+
+const { copy, mkdirp } = fsExtra;
+
 const program = new Command();
 
 async function list(lttfPlugins, previousResultsPath) {
@@ -118,15 +126,12 @@ async function getLttfPlugins() {
 
   let lttfPlugins = [];
 
-  for (const name of lttfPluginsNames) {
-    let mod;
+  // note: this is different from `currentPackageJSON` because it's creating a require for `process.cwd()` instead of using `require`
+  // to import the ``join(process.cwd(), 'package.json')`
+  const pluginRequire = createRequire(join(process.cwd(), 'package.json'));
 
-    try {
-      mod = await import(join(process.cwd(), 'node_modules', name, 'main.mjs'));
-    } catch {
-      // fallback to trying importCwd
-      mod = importCwd(name);
-    }
+  for (const name of lttfPluginsNames) {
+    let mod = pluginRequire(name);
 
     lttfPlugins.push({
       import: mod,
@@ -141,12 +146,14 @@ function getFirstObjectFromObjectKeys(object) {
   return object[key];
 }
 
+const packageJson = require(join(__dirname, 'package.json'));
+
 program
   .name('lint-to-the-future')
   .description(
     'A modern way to progressively update your code to the best practices using lint rules',
   )
-  .version(require(join(__dirname, 'package.json')).version);
+  .version(packageJson.version);
 
 program
   .command('output')
