@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-/* eslint-disable prettier/prettier */
 
 import { join, dirname } from 'path';
 import { writeFileSync, readFileSync } from 'fs';
@@ -8,6 +7,7 @@ import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
 import { Command } from 'commander';
 import { inspect } from 'util';
+import process from 'node:process';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
