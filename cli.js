@@ -16,13 +16,7 @@ const { copy, mkdirp } = fsExtra;
 
 const program = new Command();
 
-async function list(lttfPlugins, previousResultsPath) {
-  let pluginResults = {};
-
-  for (let plugin of lttfPlugins) {
-    pluginResults[plugin.name] = await plugin.import.list();
-  }
-
+async function getPreviousResults(previousResultsPath) {
   let previousResults = {};
 
   if (previousResultsPath) {
@@ -47,6 +41,18 @@ async function list(lttfPlugins, previousResultsPath) {
       }
     }
   }
+
+  return previousResults;
+}
+
+async function list(lttfPlugins, previousResultsPath) {
+  let pluginResults = {};
+
+  for (let plugin of lttfPlugins) {
+    pluginResults[plugin.name] = await plugin.import.list();
+  }
+
+  let previousResults = await getPreviousResults(previousResultsPath);
 
   // Squash old entries
   for (let date in previousResults) {
@@ -113,6 +119,57 @@ async function output({
   }
 
   writeFileSync(join(outputPath, 'data.json'), JSON.stringify(ouputResult));
+}
+
+async function diff(lttfPlugins, previousResultsPath) {
+  let currentResult = {};
+
+  for (let plugin of lttfPlugins) {
+    currentResult[plugin.name] = await plugin.import.list();
+  }
+
+  let previousResults = await getPreviousResults(previousResultsPath);
+
+  if (Object.keys(previousResults).length === 0) {
+    console.error('No previous results found, cannot generate diff');
+  }
+
+  let lastDate = Object.keys(previousResults).sort().reverse()[0];
+  let lastResult = previousResults[lastDate];
+
+  let allPlugins = new Set([
+    ...Object.keys(currentResult),
+    ...Object.keys(lastResult),
+  ]);
+
+  let added = {};
+  let removed = {};
+
+  for (let plugin of allPlugins) {
+    let allPluginRules = new Set([
+      ...Object.keys(currentResult[plugin] || {}),
+      ...Object.keys(lastResult[plugin] || {}),
+    ]);
+
+    for (let rule of allPluginRules) {
+      const currentFiles = new Set(currentResult[plugin]?.[rule]);
+      const lastFiles = new Set(lastResult[plugin]?.[rule]);
+
+      const addedFiles = currentFiles.difference(lastFiles);
+      if (addedFiles.size) {
+        added[plugin] = added[plugin] ?? {};
+        added[plugin][rule] = [...addedFiles];
+      }
+
+      const removedFiles = lastFiles.difference(currentFiles);
+      if (removedFiles.size) {
+        removed[plugin] = removed[plugin] ?? {};
+        removed[plugin][rule] = [...removedFiles];
+      }
+    }
+  }
+
+  return { added, removed };
 }
 
 async function getLttfPlugins() {
@@ -291,6 +348,44 @@ program
     }
     for (let plugin of pluginsWithRuleName) {
       await removeIgnore(plugin, lintRuleName);
+    }
+  });
+
+program
+  .command('diff')
+  .description(
+    'prints changes in file-based ignores compared to previous results',
+  )
+  .option('-o, --output <path>', 'output path for lttf diff')
+  .option('--stdout', 'print lttf diff to console')
+  .option(
+    '--previous-results <path|url>',
+    'Path or URL to the previous data.json file that was generated when the `output` command was last run',
+  )
+  .action(async ({ output: outputPath, stdout, previousResults }) => {
+    if (!outputPath && !stdout) {
+      program.error(
+        'You must provide an output path to `diff` with -o or pass --stdout',
+      );
+      return;
+    }
+
+    if (!previousResults) {
+      program.error(
+        'You must provide previous results to `diff` using `--previous-results <path|url>`',
+      );
+      return;
+    }
+
+    const lttfPlugins = await getLttfPlugins();
+    const diffResult = await diff(lttfPlugins, previousResults);
+
+    if (stdout) {
+      console.log(JSON.stringify(diffResult, null, '  '));
+    }
+
+    if (outputPath) {
+      writeFileSync(outputPath, JSON.stringify(diffResult));
     }
   });
 
