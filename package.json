@@ -100,7 +100,7 @@
     "prettier-plugin-ember-template-tag": "^2.1.0",
     "qunit": "^2.24.1",
     "qunit-dom": "^3.5.0",
-    "release-plan": "^0.17.4",
+    "release-plan": "^0.18.0",
     "stylelint": "^16.23.1",
     "stylelint-config-standard": "^36.0.1",
     "temp": "^0.9.4",

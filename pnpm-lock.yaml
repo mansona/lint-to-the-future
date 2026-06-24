@@ -66,7 +66,7 @@ specifiers:
   prettier-plugin-ember-template-tag: ^2.1.0
   qunit: ^2.24.1
   qunit-dom: ^3.5.0
-  release-plan: ^0.17.4
+  release-plan: ^0.18.0
   stylelint: ^16.23.1
   stylelint-config-standard: ^36.0.1
   temp: ^0.9.4
@@ -139,7 +139,7 @@ devDependencies:
   prettier-plugin-ember-template-tag: 2.1.3_prettier@3.8.1
   qunit: 2.25.0
   qunit-dom: 3.5.0
-  release-plan: 0.17.4
+  release-plan: 0.18.0
   stylelint: 16.26.1
   stylelint-config-standard: 36.0.1_stylelint@16.26.1
   temp: 0.9.4
@@ -12145,8 +12145,8 @@ packages:
       jsesc: 0.5.0
     dev: true
 
-  /release-plan/0.17.4:
-    resolution: {integrity: sha512-CK+RrsvP6JXysgFuqUoOvprAT95J5x8usHzAQh3M1RMQqFScnAyfY6lb1LBsjqW/HUsvLjkLfSp8dJseRHEpEw==}
+  /release-plan/0.18.0:
+    resolution: {integrity: sha512-WzP+O+XRF4AqhTDQK84FovY+TxHyC8J7QWoOwxnrvVjyHns417l1FUldboRhBYua5Pej6Yg/2jH1dEH2MRNHeA==}
     hasBin: true
     dependencies:
       '@manypkg/get-packages': 2.2.2
