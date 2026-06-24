@@ -1,16 +1,13 @@
-'use strict';
+import data from './mocks/data.json' with { type: 'json'};
 
-module.exports = function (app) {
-  const globSync = require('glob').sync;
-  const mocks = globSync('./mocks/**/*.js', { cwd: __dirname }).map(require);
-  const proxies = globSync('./proxies/**/*.js', { cwd: __dirname }).map(
-    require,
-  );
-
-  // Log proxy requests
-  const morgan = require('morgan');
-  app.use(morgan('dev'));
-
-  mocks.forEach((route) => route(app));
-  proxies.forEach((route) => route(app));
+export function mockDataMiddleware(app) {
+  return {
+    name: 'local-data-server',
+    configureServer(server) {
+      server.middlewares.use('/data.json', (req, res) => {
+        res.end(JSON.stringify(data));
+      });
+    }
+  }
 };
+
