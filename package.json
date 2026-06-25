@@ -77,7 +77,6 @@
     "ember-source": "~6.7.0",
     "ember-template-lint": "^6.1.0",
     "ember-test-selectors": "^7.0.0",
-    "ember-welcome-page": "^7.0.2",
     "eslint": "^9.35.0",
     "eslint-config-prettier": "^9.1.2",
     "eslint-plugin-ember": "^12.7.3",
