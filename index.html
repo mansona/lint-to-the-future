@@ -6,18 +6,22 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{content-for "head"}}
+    <script>
+      globalThis.lttfConfig = {
+        rootURL: '/',
+        modulePrefix: 'lint-to-the-future',
+        locationType: 'history',
+        APP: {}
+      }
+    </script>
 
     <link integrity="" rel="stylesheet" href="/@embroider/virtual/vendor.css">
-    <link integrity="" rel="stylesheet" href="/@embroider/virtual/app.css">
+    <link integrity="" rel="stylesheet" href="./app/styles/app.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    {{content-for "head-footer"}}
   </head>
   <body>
-    {{content-for "body"}}
-
     <script src="/@embroider/virtual/vendor.js"></script>
     <script type="module">
       import Application from './app/app';
@@ -25,7 +29,5 @@
 
       Application.create(environment.APP);
     </script>
-
-    {{content-for "body-footer"}}
   </body>
 </html>

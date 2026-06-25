@@ -78,18 +78,10 @@ async function output({
 
   if (rootUrl) {
     let index = readFileSync(join(outputPath, 'index.html'), 'utf8');
-    let regex =
-      /<meta name="lint-to-the-future\/config\/environment" content="(.*)"\s*\/?>/;
-    let envContentString = index.match(regex)[1];
-    let envContent = JSON.parse(decodeURIComponent(envContentString));
-    envContent.rootURL = `/${rootUrl}/`;
     writeFileSync(
       join(outputPath, 'index.html'),
       index
-        .replace(
-          regex,
-          `<meta name="lint-to-the-future/config/environment" content="${encodeURIComponent(JSON.stringify(envContent))}" />`,
-        )
+        .replace(`rootURL: '/',`, `rootURL: '/${rootUrl}/',`)
         .replace(/"\/assets\//g, `"/${rootUrl}/assets/`),
     );
   }

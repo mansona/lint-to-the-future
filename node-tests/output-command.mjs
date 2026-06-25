@@ -1,6 +1,5 @@
 import { $ } from 'execa';
 
-import { load } from 'cheerio';
 import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { expect } from 'chai';
@@ -47,19 +46,9 @@ describe('output command', function () {
       cwd: project.baseDir,
     })`lttf output -o ${outputDir}`;
 
-    const indexFile = readFileSync(join(outputDir, 'index.html'));
+    const indexFile = readFileSync(join(outputDir, 'index.html'), 'utf8');
 
-    const parsedFile = load(indexFile);
-
-    expect(
-      JSON.parse(
-        decodeURIComponent(
-          parsedFile('meta[name="lint-to-the-future/config/environment"]').attr(
-            'content',
-          ),
-        ),
-      ).rootURL,
-    ).to.eql('/');
+    expect(indexFile).to.include(`rootURL: '/',`);
   });
 
   it('should only have one day of rules in the json if no --previous-results was passed', async function () {
@@ -94,18 +83,8 @@ describe('output command', function () {
       cwd: project.baseDir,
     })`lttf output -o ${outputDir} --rootUrl face`;
 
-    const indexFile = readFileSync(join(outputDir, 'index.html'));
+    const indexFile = readFileSync(join(outputDir, 'index.html'), 'utf8');
 
-    const parsedFile = load(indexFile);
-
-    expect(
-      JSON.parse(
-        decodeURIComponent(
-          parsedFile('meta[name="lint-to-the-future/config/environment"]').attr(
-            'content',
-          ),
-        ),
-      ).rootURL,
-    ).to.eql('/face/');
+    expect(indexFile).to.include(`rootURL: '/face/',`);
   });
 });
