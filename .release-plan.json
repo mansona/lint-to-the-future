@@ -1,15 +1,11 @@
 {
   "solution": {
     "lint-to-the-future": {
-      "impact": "major",
-      "oldVersion": "2.6.4",
-      "newVersion": "3.0.0",
+      "impact": "minor",
+      "oldVersion": "3.0.0",
+      "newVersion": "3.1.0",
       "tagName": "latest",
       "constraints": [
-        {
-          "impact": "major",
-          "reason": "Appears in changelog section :boom: Breaking Change"
-        },
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
@@ -22,5 +18,5 @@
       "pkgJSONPath": "./package.json"
     }
   },
-  "description": "## Release (2026-06-25)\n\n* lint-to-the-future 3.0.0 (major)\n\n#### :boom: Breaking Change\n* `lint-to-the-future`\n  * [#87](https://github.com/mansona/lint-to-the-future/pull/87) feat: move to ESM ([@paoloricciuti](https://github.com/paoloricciuti))\n  * [#84](https://github.com/mansona/lint-to-the-future/pull/84) Drop support for Node < 20 and drop node-fetch dependency ([@mansona](https://github.com/mansona))\n\n#### :rocket: Enhancement\n* `lint-to-the-future`\n  * [#89](https://github.com/mansona/lint-to-the-future/pull/89) feat: add diff command ([@njoyard](https://github.com/njoyard))\n  * [#92](https://github.com/mansona/lint-to-the-future/pull/92) Convert dashboard app to Vite ([@mansona](https://github.com/mansona))\n  * [#83](https://github.com/mansona/lint-to-the-future/pull/83) update to v6.7.2 with ember-cli-update - and run prettier on all code ([@mansona](https://github.com/mansona))\n\n#### :house: Internal\n* `lint-to-the-future`\n  * [#95](https://github.com/mansona/lint-to-the-future/pull/95) start using testem directly ([@mansona](https://github.com/mansona))\n  * [#94](https://github.com/mansona/lint-to-the-future/pull/94) Convert Vite app to \"minimal\" mode ([@mansona](https://github.com/mansona))\n  * [#93](https://github.com/mansona/lint-to-the-future/pull/93) simplify chart component default timeSeries implementation ([@mansona](https://github.com/mansona))\n  * [#90](https://github.com/mansona/lint-to-the-future/pull/90) update release-plan ([@mansona](https://github.com/mansona))\n  * [#86](https://github.com/mansona/lint-to-the-future/pull/86) update release-plan ([@mansona](https://github.com/mansona))\n\n#### Committers: 3\n- Chris Manson ([@mansona](https://github.com/mansona))\n- Nicolas Joyard ([@njoyard](https://github.com/njoyard))\n- Paolo Ricciuti ([@paoloricciuti](https://github.com/paoloricciuti))\n"
+  "description": "## Release (2026-06-25)\n\n* lint-to-the-future 3.1.0 (minor)\n\n#### :rocket: Enhancement\n* `lint-to-the-future`\n  * [#99](https://github.com/mansona/lint-to-the-future/pull/99) update commander to v14 ([@mansona](https://github.com/mansona))\n  * [#98](https://github.com/mansona/lint-to-the-future/pull/98) remove fs-extra ([@mansona](https://github.com/mansona))\n  * [#96](https://github.com/mansona/lint-to-the-future/pull/96) update temporal-polyfill to v1 ([@mansona](https://github.com/mansona))\n\n#### :house: Internal\n* `lint-to-the-future`\n  * [#100](https://github.com/mansona/lint-to-the-future/pull/100) remove ember-welcome-page ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
 }
