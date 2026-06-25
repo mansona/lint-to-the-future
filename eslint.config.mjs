@@ -69,14 +69,7 @@ export default defineConfig([
    */
   {
     ...n.configs['flat/recommended-script'],
-    files: [
-      '**/*.cjs',
-      'config/**/*.js',
-      'cli.js',
-      'ember-cli-build.js',
-      'lib/testem-middleware/**/*.js',
-      'testem.js',
-    ],
+    files: ['**/*.cjs', 'lib/testem-middleware/**/*.js', 'testem.js'],
     plugins: {
       n,
     },

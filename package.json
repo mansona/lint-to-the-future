@@ -1,6 +1,7 @@
 {
   "name": "lint-to-the-future",
   "version": "2.6.4",
+  "type": "module",
   "description": "A modern way to progressively update your code to the best practices",
   "repository": "https://github.com/mansona/lint-to-the-future",
   "license": "MIT",
@@ -38,7 +39,6 @@
   "dependencies": {
     "commander": "^9.4.1",
     "fs-extra": "^7.0.1",
-    "import-cwd": "^3.0.0",
     "temporal-polyfill": "^0.2.5"
   },
   "devDependencies": {
