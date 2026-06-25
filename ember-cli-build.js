@@ -1,11 +1,10 @@
 'use strict';
-const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+import EmberApp from 'ember-cli/lib/broccoli/ember-app.js';
 
-const { compatBuild } = require('@embroider/compat');
+import { compatBuild } from '@embroider/compat';
+import { buildOnce } from '@embroider/vite';
 
-module.exports = async function (defaults) {
-  const { buildOnce } = await import('@embroider/vite');
-
+export default async function (defaults) {
   const app = new EmberApp(defaults, {
     emberData: {
       deprecations: {
@@ -20,4 +19,4 @@ module.exports = async function (defaults) {
   });
 
   return compatBuild(app, buildOnce);
-};
+}
