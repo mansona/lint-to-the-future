@@ -41,7 +41,6 @@ specifiers:
   ember-source: ~6.7.0
   ember-template-lint: ^6.1.0
   ember-test-selectors: ^7.0.0
-  ember-welcome-page: ^7.0.2
   eslint: ^9.35.0
   eslint-config-prettier: ^9.1.2
   eslint-plugin-ember: ^12.7.3
@@ -112,7 +111,6 @@ devDependencies:
   ember-source: 6.7.0_@glimmer+component@2.0.0
   ember-template-lint: 6.1.0
   ember-test-selectors: 7.0.0
-  ember-welcome-page: 7.0.2
   eslint: 9.39.2
   eslint-config-prettier: 9.1.2_eslint@9.39.2
   eslint-plugin-ember: 12.7.5_gvkc47iil6lotzalymyyptgck4
@@ -7176,15 +7174,6 @@ packages:
     dependencies:
       ember-cli-babel: 7.26.11
       ember-cli-htmlbars: 5.7.2
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /ember-welcome-page/7.0.2:
-    resolution: {integrity: sha512-TyaKxFIRXhODW5BTbqD/by0Gu8Z9B9AA1ki3Bzzm6fOj2b30Qlprtt+XUG52kS0zVNmxYj/WWoT0TsKiU61VOw==}
-    engines: {node: 14.* || 16.* || >= 18}
-    dependencies:
-      '@embroider/addon-shim': 1.8.9
     transitivePeerDependencies:
       - supports-color
     dev: true
