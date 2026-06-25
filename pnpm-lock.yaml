@@ -23,7 +23,7 @@ specifiers:
   '@rollup/plugin-babel': ^7.0.0
   babel-plugin-ember-template-compilation: ^3.1.0
   chai: ^4.3.6
-  commander: ^9.4.1
+  commander: ^14.0.0
   concurrently: ^9.2.1
   decorator-transforms: ^2.3.1
   ember-auto-import: ^2.10.0
@@ -72,7 +72,7 @@ specifiers:
   vite: ^8.0.10
 
 dependencies:
-  commander: 9.5.0
+  commander: 14.0.3
   set.prototype.difference: 1.1.7
   temporal-polyfill: 1.0.1
 
@@ -5673,7 +5673,6 @@ packages:
   /commander/14.0.3:
     resolution: {integrity: sha512-H+y0Jo/T1RZ9qPP4Eh1pkcQcLRglraJaSLoyOtHxu6AapkjWVCy2Sit1QQ4x3Dng8qDlSsZEet7g5Pq06MvTgw==}
     engines: {node: '>=20'}
-    dev: true
 
   /commander/2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
@@ -5693,11 +5692,6 @@ packages:
     resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
     engines: {node: '>= 12'}
     dev: true
-
-  /commander/9.5.0:
-    resolution: {integrity: sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==}
-    engines: {node: ^12.20.0 || >=14}
-    dev: false
 
   /common-ancestor-path/1.0.1:
     resolution: {integrity: sha512-L3sHRo1pXXEqX8VU28kfgUY+YGsk09hPqZiZmLacNib6XNTCM8ubYeT7ryXQw8asB1sKgcU5lkB7ONug08aB8w==}
