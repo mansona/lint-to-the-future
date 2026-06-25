@@ -1,5 +1,33 @@
 # Changelog
 
+## Release (2026-06-25)
+
+* lint-to-the-future 3.0.0 (major)
+
+#### :boom: Breaking Change
+* `lint-to-the-future`
+  * [#87](https://github.com/mansona/lint-to-the-future/pull/87) feat: move to ESM ([@paoloricciuti](https://github.com/paoloricciuti))
+  * [#84](https://github.com/mansona/lint-to-the-future/pull/84) Drop support for Node < 20 and drop node-fetch dependency ([@mansona](https://github.com/mansona))
+
+#### :rocket: Enhancement
+* `lint-to-the-future`
+  * [#89](https://github.com/mansona/lint-to-the-future/pull/89) feat: add diff command ([@njoyard](https://github.com/njoyard))
+  * [#92](https://github.com/mansona/lint-to-the-future/pull/92) Convert dashboard app to Vite ([@mansona](https://github.com/mansona))
+  * [#83](https://github.com/mansona/lint-to-the-future/pull/83) update to v6.7.2 with ember-cli-update - and run prettier on all code ([@mansona](https://github.com/mansona))
+
+#### :house: Internal
+* `lint-to-the-future`
+  * [#95](https://github.com/mansona/lint-to-the-future/pull/95) start using testem directly ([@mansona](https://github.com/mansona))
+  * [#94](https://github.com/mansona/lint-to-the-future/pull/94) Convert Vite app to "minimal" mode ([@mansona](https://github.com/mansona))
+  * [#93](https://github.com/mansona/lint-to-the-future/pull/93) simplify chart component default timeSeries implementation ([@mansona](https://github.com/mansona))
+  * [#90](https://github.com/mansona/lint-to-the-future/pull/90) update release-plan ([@mansona](https://github.com/mansona))
+  * [#86](https://github.com/mansona/lint-to-the-future/pull/86) update release-plan ([@mansona](https://github.com/mansona))
+
+#### Committers: 3
+- Chris Manson ([@mansona](https://github.com/mansona))
+- Nicolas Joyard ([@njoyard](https://github.com/njoyard))
+- Paolo Ricciuti ([@paoloricciuti](https://github.com/paoloricciuti))
+
 ## Release (2025-09-19)
 
 lint-to-the-future 2.6.4 (patch)
