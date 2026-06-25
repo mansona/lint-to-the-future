@@ -1,4 +1,3 @@
-import loadConfigFromMeta from '@embroider/config-meta-loader';
 import { assert } from '@ember/debug';
 
 const config = globalThis.lttfConfig;
