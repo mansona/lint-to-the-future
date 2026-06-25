@@ -1,13 +1,12 @@
-import data from './mocks/data.json' with { type: 'json'};
+import data from './mocks/data.json' with { type: 'json' };
 
-export function mockDataMiddleware(app) {
+export function mockDataMiddleware() {
   return {
     name: 'local-data-server',
     configureServer(server) {
       server.middlewares.use('/data.json', (req, res) => {
         res.end(JSON.stringify(data));
       });
-    }
-  }
-};
-
+    },
+  };
+}

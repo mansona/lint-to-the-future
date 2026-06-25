@@ -19,6 +19,7 @@ async function list(lttfPlugins, previousResultsPath) {
 
   if (previousResultsPath) {
     if (previousResultsPath.match(/((http(s?)):\/\/)/)) {
+      // eslint-disable-next-line n/no-unsupported-features/node-builtins
       const response = await fetch(previousResultsPath);
 
       if (response.ok) {

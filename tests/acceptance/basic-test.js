@@ -8,7 +8,7 @@ module('Acceptance | basic', function (hooks) {
   test('basic functionality', async function (assert) {
     await visit('/');
 
-    assert.equal(currentURL(), '/');
+    assert.strictEqual(currentURL(), '/');
     assert.dom('[data-test-chart]').exists({ count: 11 });
     // await this.pauseTest();
 
@@ -31,7 +31,7 @@ module('Acceptance | basic', function (hooks) {
     await click(
       '[data-test-view-files="lint-to-the-future-eslint:prettier/prettier"]',
     );
-    assert.equal(
+    assert.strictEqual(
       currentURL(),
       '/rule/lint-to-the-future-eslint:prettier/prettier',
     );
@@ -41,7 +41,7 @@ module('Acceptance | basic', function (hooks) {
   test('completed rules are filtered into collapsed window', async function (assert) {
     await visit('/');
 
-    assert.equal(currentURL(), '/');
+    assert.strictEqual(currentURL(), '/');
     // top level charts
     assert
       .dom('.ember-application > div > [data-test-chart]')
