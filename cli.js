@@ -78,7 +78,7 @@ async function output({
   if (rootUrl) {
     let index = readFileSync(join(outputPath, 'index.html'), 'utf8');
     let regex =
-      /<meta name="lint-to-the-future\/config\/environment" content="(.*)" \/>/;
+      /<meta name="lint-to-the-future\/config\/environment" content="(.*)"\s*\/?>/;
     let envContentString = index.match(regex)[1];
     let envContent = JSON.parse(decodeURIComponent(envContentString));
     envContent.rootURL = `/${rootUrl}/`;
