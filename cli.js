@@ -2,18 +2,16 @@
 
 import { join, dirname } from 'path';
 import { writeFileSync, readFileSync } from 'fs';
-import fsExtra from 'fs-extra';
 import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
 import { Command } from 'commander';
 import { inspect } from 'util';
 import process from 'node:process';
 import difference from 'set.prototype.difference';
+import { cp, mkdir } from 'node:fs/promises';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
-
-const { copy, mkdirp } = fsExtra;
 
 const program = new Command();
 
@@ -88,7 +86,7 @@ async function output({
 
   const ouputResult = await list(lttfPlugins, previousResultsPath);
 
-  await copy(join(__dirname, 'dist'), outputPath);
+  await cp(join(__dirname, 'dist'), outputPath, { recursive: true });
 
   if (rootUrl) {
     let index = readFileSync(join(outputPath, 'index.html'), 'utf8');
@@ -114,7 +112,7 @@ async function output({
 
     for (let ruleName of ruleNames) {
       let ruleFolder = join(outputPath, 'rule', ruleName);
-      await mkdirp(ruleFolder);
+      await mkdir(ruleFolder, { recursive: true });
       writeFileSync(join(ruleFolder, 'index.html'), index);
     }
   }
