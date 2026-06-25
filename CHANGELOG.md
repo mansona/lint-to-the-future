@@ -2,6 +2,23 @@
 
 ## Release (2026-06-25)
 
+* lint-to-the-future 3.1.0 (minor)
+
+#### :rocket: Enhancement
+* `lint-to-the-future`
+  * [#99](https://github.com/mansona/lint-to-the-future/pull/99) update commander to v14 ([@mansona](https://github.com/mansona))
+  * [#98](https://github.com/mansona/lint-to-the-future/pull/98) remove fs-extra ([@mansona](https://github.com/mansona))
+  * [#96](https://github.com/mansona/lint-to-the-future/pull/96) update temporal-polyfill to v1 ([@mansona](https://github.com/mansona))
+
+#### :house: Internal
+* `lint-to-the-future`
+  * [#100](https://github.com/mansona/lint-to-the-future/pull/100) remove ember-welcome-page ([@mansona](https://github.com/mansona))
+
+#### Committers: 1
+- Chris Manson ([@mansona](https://github.com/mansona))
+
+## Release (2026-06-25)
+
 * lint-to-the-future 3.0.0 (major)
 
 #### :boom: Breaking Change
