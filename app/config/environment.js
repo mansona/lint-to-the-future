@@ -1,7 +1,7 @@
 import loadConfigFromMeta from '@embroider/config-meta-loader';
 import { assert } from '@ember/debug';
 
-const config = loadConfigFromMeta('lint-to-the-future');
+const config = globalThis.lttfConfig;
 
 assert(
   'config is not an object',
