@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url';
 import { Command } from 'commander';
 import { inspect } from 'util';
 import process from 'node:process';
+import difference from 'set.prototype.difference';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
@@ -155,13 +156,13 @@ async function diff(lttfPlugins, previousResultsPath) {
       const currentFiles = new Set(currentResult[plugin]?.[rule]);
       const lastFiles = new Set(lastResult[plugin]?.[rule]);
 
-      const addedFiles = currentFiles.difference(lastFiles);
+      const addedFiles = difference(currentFiles, lastFiles);
       if (addedFiles.size) {
         added[plugin] = added[plugin] ?? {};
         added[plugin][rule] = [...addedFiles];
       }
 
-      const removedFiles = lastFiles.difference(currentFiles);
+      const removedFiles = difference(lastFiles, currentFiles);
       if (removedFiles.size) {
         removed[plugin] = removed[plugin] ?? {};
         removed[plugin][rule] = [...removedFiles];
