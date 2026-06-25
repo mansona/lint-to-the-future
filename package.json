@@ -37,7 +37,7 @@
     "test:node": "mocha node-tests/*"
   },
   "dependencies": {
-    "commander": "^9.4.1",
+    "commander": "^14.0.0",
     "set.prototype.difference": "^1.1.7",
     "temporal-polyfill": "^1.0.1"
   },
