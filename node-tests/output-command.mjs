@@ -48,7 +48,7 @@ describe('output command', function () {
 
     const indexFile = readFileSync(join(outputDir, 'index.html'), 'utf8');
 
-    expect(indexFile).to.include(`rootURL: '/',`)
+    expect(indexFile).to.include(`rootURL: '/',`);
   });
 
   it('should only have one day of rules in the json if no --previous-results was passed', async function () {
@@ -85,6 +85,6 @@ describe('output command', function () {
 
     const indexFile = readFileSync(join(outputDir, 'index.html'), 'utf8');
 
-    expect(indexFile).to.include(`rootURL: '/face/',`)
+    expect(indexFile).to.include(`rootURL: '/face/',`);
   });
 });

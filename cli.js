@@ -81,10 +81,7 @@ async function output({
     writeFileSync(
       join(outputPath, 'index.html'),
       index
-        .replace(
-          `rootURL: '/',`,
-          `rootURL: '/${rootUrl}/',`,
-        )
+        .replace(`rootURL: '/',`, `rootURL: '/${rootUrl}/',`)
         .replace(/"\/assets\//g, `"/${rootUrl}/assets/`),
     );
   }
