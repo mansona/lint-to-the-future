@@ -40,7 +40,7 @@
     "commander": "^9.4.1",
     "fs-extra": "^7.0.1",
     "set.prototype.difference": "^1.1.7",
-    "temporal-polyfill": "^0.2.5"
+    "temporal-polyfill": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",

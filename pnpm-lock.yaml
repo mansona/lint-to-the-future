@@ -67,7 +67,7 @@ specifiers:
   stylelint: ^16.23.1
   stylelint-config-standard: ^36.0.1
   temp: ^0.9.4
-  temporal-polyfill: ^0.2.5
+  temporal-polyfill: ^1.0.1
   testem: ^3.20.1
   tracked-built-ins: ^3.4.0
   vite: ^8.0.10
@@ -76,7 +76,7 @@ dependencies:
   commander: 9.5.0
   fs-extra: 7.0.1
   set.prototype.difference: 1.1.7
-  temporal-polyfill: 0.2.5
+  temporal-polyfill: 1.0.1
 
 devDependencies:
   '@babel/core': 7.29.0
@@ -14098,14 +14098,19 @@ packages:
       rimraf: 2.6.3
     dev: true
 
-  /temporal-polyfill/0.2.5:
-    resolution: {integrity: sha512-ye47xp8Cb0nDguAhrrDS1JT1SzwEV9e26sSsrWzVu+yPZ7LzceEcH0i2gci9jWfOfSCCgM3Qv5nOYShVUUFUXA==}
+  /temporal-polyfill/1.0.1:
+    resolution: {integrity: sha512-N2SoI9olnW7BUsU8RosDphZQl9s+WJ8O7PoJMFCr/e5/1rFkVI4GNOWaSeySG+UoP04foPYsnLWbJmbXOiShZg==}
     dependencies:
-      temporal-spec: 0.2.4
+      temporal-spec: 1.0.0
+      temporal-utils: 1.0.1
     dev: false
 
-  /temporal-spec/0.2.4:
-    resolution: {integrity: sha512-lDMFv4nKQrSjlkHKAlHVqKrBG4DyFfa9F74cmBZ3Iy3ed8yvWnlWSIdi4IKfSqwmazAohBNwiN64qGx4y5Q3IQ==}
+  /temporal-spec/1.0.0:
+    resolution: {integrity: sha512-00Ahj1e1ifaERTMOIIGpOCdOo9IEk2m6GGSMedsn9a2SIsGLdOTbmME1Htv6IM82b6VHrzSUTIVc7YHy6hdhFQ==}
+    dev: false
+
+  /temporal-utils/1.0.1:
+    resolution: {integrity: sha512-HAixuesxFQIUaQk3ptX2jhfO/FsOkgVkDDMawvp6n/fkB1q6BKfs3lURw9I+pK/2e2e/q/vrLrxmeqauBoyGMQ==}
     dev: false
 
   /terser/5.34.1:
