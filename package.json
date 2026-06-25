@@ -32,7 +32,7 @@
     "prepublishOnly": "rm -rf dist && npm run build",
     "start": "vite",
     "test": "concurrently \"npm:lint\" \"npm:test:*\" --names \"lint,test:\" --prefixColors auto",
-    "test:ember": "vite build --mode development && ember test --path dist",
+    "test:ember": "vite build --mode development && testem --file testem.cjs ci --port 0",
     "test:node": "mocha node-tests/*"
   },
   "dependencies": {
@@ -101,6 +101,7 @@
     "stylelint": "^16.23.1",
     "stylelint-config-standard": "^36.0.1",
     "temp": "^0.9.4",
+    "testem": "^3.20.1",
     "tracked-built-ins": "^3.4.0",
     "vite": "^8.0.10"
   },
@@ -116,11 +117,6 @@
   },
   "ember": {
     "edition": "octane"
-  },
-  "ember-addon": {
-    "paths": [
-      "lib/testem-middleware"
-    ]
   },
   "exports": {
     "./tests/*": "./tests/*",

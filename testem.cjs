@@ -1,7 +1,11 @@
 'use strict';
+
 if (typeof module !== 'undefined') {
+  const data = require('./server/mocks/data.json');
+
   module.exports = {
     test_page: 'tests/index.html?hidepassed',
+    cwd: 'dist',
     disable_watching: true,
     launch_in_ci: ['Chrome'],
     launch_in_dev: ['Chrome'],
@@ -11,7 +15,7 @@ if (typeof module !== 'undefined') {
         ci: [
           // --no-sandbox is needed when running Chrome inside a container
           process.env.CI ? '--no-sandbox' : null,
-          '--headless',
+          '--headless=new',
           '--disable-dev-shm-usage',
           '--disable-software-rasterizer',
           '--mute-audio',
@@ -20,5 +24,12 @@ if (typeof module !== 'undefined') {
         ].filter(Boolean),
       },
     },
+    middleware: [
+      function (app) {
+        app.get('/data.json', (req, res) => {
+          res.send(data);
+        });
+      },
+    ],
   };
 }
