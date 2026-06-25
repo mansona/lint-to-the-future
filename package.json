@@ -58,7 +58,6 @@
     "@embroider/vite": "^1.7.2",
     "@eslint/js": "^9.35.0",
     "@glimmer/component": "^2.0.0",
-    "@glimmer/tracking": "^1.1.2",
     "@rollup/plugin-babel": "^7.0.0",
     "babel-plugin-ember-template-compilation": "^3.1.0",
     "chai": "^4.3.6",

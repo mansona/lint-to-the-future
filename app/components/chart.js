@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
+import { tracked, cached } from '@glimmer/tracking';
 import { guidFor } from '@ember/object/internals';
 
 import { Chart } from 'frappe-charts/dist/frappe-charts.min.esm';
@@ -85,7 +85,7 @@ export default class ChartComponent extends Component {
   @action
   selectTimeSeries(series) {
     this.timeSeries = series;
-    let processedData = normaliseData(this.args.data, this.args.highestDate);
+    let processedData = this.processedData;
 
     if (series === 'weekly') {
       processedData = weeklyData(processedData);
@@ -98,17 +98,32 @@ export default class ChartComponent extends Component {
     this.chart.update(getData(processedData, this.ruleName));
   }
 
-  @action
-  renderChart(element) {
-    let processedData = normaliseData(this.args.data, this.args.highestDate);
+  @cached
+  get processedData() {
+    return normaliseData(this.args.data, this.args.highestDate);
+  }
 
-    // set the default to weekly data if too many datapoints
+  constructor() {
+    super(...arguments);
+
+    let processedData = this.processedData;
+
     if (Object.keys(processedData).length > 100) {
-      processedData = monthlyData(processedData);
       this.timeSeries = 'monthly';
     } else if (Object.keys(processedData).length > 40) {
-      processedData = weeklyData(processedData);
       this.timeSeries = 'weekly';
+    }
+  }
+
+  @action
+  renderChart(element) {
+    let processedData = this.processedData;
+
+    // set the default to weekly data if too many datapoints
+    if (this.timeSeries === 'monthly') {
+      processedData = monthlyData(processedData);
+    } else if (this.timeSeries === 'weekly') {
+      processedData = weeklyData(processedData);
     }
 
     const data = getData(processedData, this.ruleName);
