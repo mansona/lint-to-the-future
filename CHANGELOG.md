@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2026-06-29)
+
+* lint-to-the-future 3.2.0 (minor)
+
+#### :rocket: Enhancement
+* `lint-to-the-future`
+  * [#77](https://github.com/mansona/lint-to-the-future/pull/77) Allow namespaced plugins ([@wagenet](https://github.com/wagenet))
+
+#### Committers: 1
+- Peter Wagenet ([@wagenet](https://github.com/wagenet))
+
 ## Release (2026-06-25)
 
 * lint-to-the-future 3.1.0 (minor)
