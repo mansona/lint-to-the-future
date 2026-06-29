@@ -2,21 +2,17 @@
   "solution": {
     "lint-to-the-future": {
       "impact": "minor",
-      "oldVersion": "3.0.0",
-      "newVersion": "3.1.0",
+      "oldVersion": "3.1.0",
+      "newVersion": "3.2.0",
       "tagName": "latest",
       "constraints": [
         {
           "impact": "minor",
           "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
         }
       ],
       "pkgJSONPath": "./package.json"
     }
   },
-  "description": "## Release (2026-06-25)\n\n* lint-to-the-future 3.1.0 (minor)\n\n#### :rocket: Enhancement\n* `lint-to-the-future`\n  * [#99](https://github.com/mansona/lint-to-the-future/pull/99) update commander to v14 ([@mansona](https://github.com/mansona))\n  * [#98](https://github.com/mansona/lint-to-the-future/pull/98) remove fs-extra ([@mansona](https://github.com/mansona))\n  * [#96](https://github.com/mansona/lint-to-the-future/pull/96) update temporal-polyfill to v1 ([@mansona](https://github.com/mansona))\n\n#### :house: Internal\n* `lint-to-the-future`\n  * [#100](https://github.com/mansona/lint-to-the-future/pull/100) remove ember-welcome-page ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
+  "description": "## Release (2026-06-29)\n\n* lint-to-the-future 3.2.0 (minor)\n\n#### :rocket: Enhancement\n* `lint-to-the-future`\n  * [#77](https://github.com/mansona/lint-to-the-future/pull/77) Allow namespaced plugins ([@wagenet](https://github.com/wagenet))\n\n#### Committers: 1\n- Peter Wagenet ([@wagenet](https://github.com/wagenet))\n"
 }
